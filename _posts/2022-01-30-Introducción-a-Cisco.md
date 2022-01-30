@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Introducción a Cisco"
-date:   2022-01-30 13:07:57 +0200
+date:   2022-01-30 17:16:00
 categories: Cisco
 banner: "../assets/images/banners/Cisco-portada.png"
 ---
