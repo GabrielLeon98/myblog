@@ -103,3 +103,30 @@ Existen 3 modos principales en el CLI de Cisco:
 *  **Modo configuración global**: desde este modo podemos hacer la mayoría de las configuraciones como cambiar el nombre del dispositivo, configuración de IPs para las interfaces, enrutamiento, etc. El modo configuración global no muestra símbolo, en lugar de ello nos muestra entre paréntesis "(config)" para indicárnoslo.
 
 Como he dicho anteriormente, dependiendo del modo en que nos encontremos podemos ejecutar unos comandos u otros. Podemos ver qué comandos podemos ejecutar si introducimos el símbolo "**?**":
+
+````console
+Configure commands:
+  aaa                         Authentication, Authorization and Accounting.
+  access-list                 Add an access list entry
+  alias                       Create command alias
+  appfw                       Configure the Application Firewall policy
+  archive                     Archive the configuration
+  arp                         Set a static ARP entry
+  async-bootp                 Modify system bootp parameters
+  autoupgrade                 Auto Upgrade Manager simplifies image upgrade
+                              process
+  banner                      Define a login banner
+  bba-group                   Configure BBA Group
+  beep                        Configure BEEP (Blocks Extensible Exchange
+                              Protocol)
+  bfd                         BFD configuration commands
+  boot                        Modify system boot parameters
+  bridge                      Bridge Group.
+  buffers                     Adjust system buffer pool parameters
+  busy-message                Display message when connection to host fails
+  call                        Configure Call parameters
+  call-history-mib            Define call history mib parameters
+  call-home                   Enter call-home configuration mode
+  cdp                         Global CDP configuration subcommands
+ --More--
+````
