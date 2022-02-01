@@ -46,7 +46,7 @@ root@eve-vm:~#
 
 Ahora que hemos comprobado que todo está OK, se puede hacer uso de EVE-NG introduciendo desde algún navegador web la IP que hemos asignado a la máquina virtual:
 
-![eve](https://i.ibb.co/02Mrzrp/introduccion-a-cisco-1.jpg "EVE-NG")
+![eve](https://i.ibb.co/qN222P1/introduccion-a-cisco-1.jpg "EVE-NG")
 
 Ahora que hemos realizado los preparativos para posteriormente hacer los laboratorios, es hora de entrar en materia con Cisco. Antes de empezar a hablar de configuraciones, lo primero es hablar de lo que es el dispositivo físicamente. 
 
