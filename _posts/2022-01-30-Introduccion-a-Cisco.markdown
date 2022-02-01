@@ -48,7 +48,7 @@ Ahora que hemos comprobado que todo está OK, se puede hacer uso de EVE-NG intro
 
 ![eve](https://i.ibb.co/qN222P1/introduccion-a-cisco-1.jpg "EVE-NG")
 
-Ahora que hemos realizado los preparativos para posteriormente hacer los laboratorios, es hora de entrar en materia con Cisco. Antes de empezar a hablar de configuraciones, lo primero es hablar de lo que es el dispositivo físicamente. 
+Ahora que hemos realizado los preparativos para posteriormente hacer los laboratorios, es hora de entrar en materia con Cisco. Antes de empezar a hablar de configuraciones, lo primero es hablar de lo que es el dispositivo físicamente para tener una idea de su funcionamiento real. 
 
 La mayoría de dispositivos Cisco poseen tres tipos de puertos:
 
@@ -60,10 +60,21 @@ Los puertos Ethernet son a los que conectamos los equipos de la red, el puerto d
 
 Supongamos que tenemos un router Cisco que no ha sido usado previamente, por lo que no tiene configuración alguna. Lo primero es conectarnos mediante un cable de consola al router. El cable de consola contiene en un extremo un conector RJ-45 y en el otro un conector puerto serie DB9 hembra. Los PC de hoy en día ya no traen consigo puerto serie, por lo que si no disponemos de un ordenador que tenga puerto serie, existen adaptadores de puerto serie a USB que podemos comprar a un precio razonable.
 
-Una vez que tengamos conectado el cable de consola desde nuestro equipo al router accedemos a la CLI. En mi caso usaré PUTTY.
+Una vez que tengamos conectado el cable de consola desde nuestro equipo al router accedemos a la CLI. En mi caso usaré PUTTY, donde seleccionaré el puerto COM (serie) adecuado y otras configuraciones. Yo estoy usando un adaptador de puerto serie a USB. Si usais un cable de este tipo debéis instalar el driver que os proporcione el fabricante.
 
+Típicamente, los parámetros para la configuración del dispositivo 
+mediante cable de consola son: 
+* Puerto COM adecuado 
+* 9600 baudios 
+* 8 bits de datos 
+* Sin paridad 
+* 1 bit de parada 
+* Sin control de flujo 
 
-IMAGEN
+Desde PUTTY, esta configuración se puede realizar si nos vamos al menú de la izquierda, en el apartado "serial":
+ 
+![putty](https://i.ibb.co/3r2pP0j/introduccion-a-cisco-putty.jpg "putty") 
 
+En el apartado "Session" seleccionamos el puerto COM adecuado, el tipo de conexión "Serial" y la velocidad en 9600:
 
-Se ha de seleccionar el puerto COM adecuado, la velocidad en 9600.
+![putty](https://i.ibb.co/s1t4jpc/introduccion-a-cisco-putty2.jpg "putty")
