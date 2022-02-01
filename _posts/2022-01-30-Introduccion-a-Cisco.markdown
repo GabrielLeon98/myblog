@@ -78,3 +78,27 @@ Desde PUTTY, esta configuración se puede realizar si nos vamos al menú de la i
 En el apartado "Session" seleccionamos el puerto COM adecuado, el tipo de conexión "Serial" y la velocidad en 9600:
 
 ![putty](https://i.ibb.co/s1t4jpc/introduccion-a-cisco-putty2.jpg "putty")
+
+Finalmente hacemos clic en "Open" y entraremos en el CLI de Cisco:
+
+![putty](https://i.ibb.co/8rDsLWq/introduccion-a-cisco-putty3.jpg "putty")
+
+Se puede apreciar en la imagen anterior que antes tuve que insertar una contraseña para poder entrar al CLI. Esto se hace estableciendo una contraseña para el acceso por consola, algo que veremos más adelante. La imagen mostrada corresponde a un router Cisco real que tengo por casa, ya que mediante EVE-NG no puedo hacer una demostración real para este caso.
+
+Es importante conocer algunas características en cuanto al hardware de Cisco. Los switches y routers de Cisco contienen:
+
+* Una memoria **flash**, que es el equivalente a un disco duro en un PC. En ella se almacena el software IOS de Cisco.
+* Memoria **RAM** (Random Access Memory) en español, memoria de acceso aleatorio. En ella se guardan las configuraciones que están corriendo en un momento dado. Su contenido se pierde al apagar/reiniciar el dispositivo.
+* **NVRAM** (Non-Volatile Random Access Memory) en español, memoria de acceso aleatorio no volátil. En ella se guardan las configuraciones de inicio y su contenido no se pierde al apagar/reiniciar el dispositivo.
+* **ROM** (Read Only Memory) en español, memoria de solo lectura. Se utiliza para almacenar de forma permanente el código de diagnóstico de inicio (Monitor de ROM)
+
+Durante el arranque del dispositivo, este lleva a cabo unas rutinas de detección del hardware. Para estas rutinas se emplea el término **POST** (Power-on Selft Test). Una vez que se ha comprobado todo el hardware y este se encuentra operativo, se procede al arranque del sistema IOS. Tras cargar el sistema operativo, se cargan las configuraciones almacenadas en memoria (si las hay).
+
+A partir de ahora haremos algunas configuraciones básicas de inicio en nuestro dispositivo y veremos como poder guardar toda configuración introducida pero no sin antes hablar del CLI de Cisco.
+
+Existen 3 modos principales en el CLI de Cisco:
+
+* **Modo usuario**: es el primer modo de configuración. Cualquier usuario que tenga acceso al dispositivo pasará por este modo. Desde aquí no podemos hacer ninguna configuración al dispositivo ya que no tendremos los privilegios para ello. Lo único que podemos ejecutar son comandos "informativos". Cada modo nos muestra un símbolo cuya finalidad es informarnos de en qué modo estamos. El modo usuario muestra el símnomo "**>**". Para pasar al siguiente modo (privilegiado) tenemos que ejecutar el comando **enable**
+*  **Modo privilegiado**: dentro de este modo tendremos los privilegios para hacer configuraciones en el dispositivo. Además, desde aquí podemos acceder al modo que nos permite realizar la mayoría de las configuraciones (modo global) ejecutando el comando **configure terminal**. Para regresar al modo usuario se ejecuta **disable**. El modo privilegiado muestra el símbolo "**#**".
+*  **Modo configuración global**: desde este modo podemos hacer la mayoría de las configuraciones como cambiar el nombre del dispositivo, configuración de IPs para las interfaces, enrutamiento, etc. El modo configuración global no muestra símbolo, en lugar de ello nos muestra entre paréntesis "(config)"-
+
