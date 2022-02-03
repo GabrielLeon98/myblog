@@ -98,9 +98,9 @@ A partir de ahora haremos algunas configuraciones básicas de inicio en nuestro 
 
 Existen 3 modos principales en el CLI de Cisco:
 
-* **Modo usuario**: es el primer modo de configuración. Cualquier usuario que tenga acceso al dispositivo pasará por este modo. Desde aquí no podemos hacer ninguna configuración al dispositivo ya que no tendremos los privilegios para ello. Lo único que podemos ejecutar son comandos "informativos". Cada modo nos muestra un símbolo cuya finalidad es informarnos de en qué modo estamos. El modo usuario muestra el símnomo "**>**". Para pasar al siguiente modo (privilegiado) tenemos que ejecutar el comando **enable**
+* **Modo usuario**: es el primer modo de configuración. Cualquier usuario que tenga acceso al dispositivo pasará por este modo. Desde aquí no podemos hacer ninguna configuración al dispositivo ya que no tendremos los privilegios para ello. Lo único que podemos ejecutar son comandos "informativos". Cada modo nos muestra un símbolo cuya finalidad es informarnos de en qué modo estamos. El modo usuario muestra el símnomo "**>**". Para pasar al siguiente modo (privilegiado) tenemos que ejecutar el comando **enable**.
 *  **Modo privilegiado**: dentro de este modo tendremos los privilegios para hacer configuraciones en el dispositivo. Además, desde aquí podemos acceder al modo que nos permite realizar la mayoría de las configuraciones (modo global) ejecutando el comando **configure terminal**. Para regresar al modo usuario se ejecuta **disable**. El modo privilegiado muestra el símbolo "**#**".
-*  **Modo configuración global**: desde este modo podemos hacer la mayoría de las configuraciones como cambiar el nombre del dispositivo, configuración de IPs para las interfaces, enrutamiento, etc. El modo configuración global no muestra símbolo, en lugar de ello nos muestra entre paréntesis "(config)" para indicárnoslo.
+*  **Modo configuración global**: desde este modo podemos hacer la mayoría de las configuraciones como cambiar el nombre del dispositivo, configuración de IPs para las interfaces, enrutamiento, etc. El modo configuración global no muestra símbolo, en lugar de ello nos muestra entre paréntesis "(config)" para indicárnoslo. Para volver al modo privilegiado podemos ejecutar **exit**, **end** e incluso mediante la combinación de teclas "Control + z".
 
 Como he dicho anteriormente, dependiendo del modo en que nos encontremos podemos ejecutar unos comandos u otros. Podemos ver qué comandos podemos ejecutar si introducimos el símbolo "**?**":
 
@@ -129,4 +129,25 @@ Configure commands:
   call-home                   Enter call-home configuration mode
   cdp                         Global CDP configuration subcommands
  --More--
+````
+
+Vamos ahora a realizar algunas configuraciones básicas: primero vamos a configurar un nombre al dispositivo. Esto es algo recomendado para así poder indentificar con mayor facilidad a los dispositivos en una red. Para ello debemos ir al modo de configuración global y ejecutamos ````hostname nombredeldispositivo````
+
+````console 
+Router#conf t 
+Enter configuration commands, one per line. End with CNTL/Z. 
+Router(config)#hostname ROUTER_SE 
+ROUTER_SE(config)#
+````
+
+Se puede observar que a la hora de introducir ````configure terminal```` para acceder al modo de configuración global solo me ha bastado escribiendo el comando de una forma corta. El CLI de Cisco nos permite abreviar los comandos mientras existan coincidencias suficientes para saber qué comando es el que queremos ejecutar.
+
+También es importante tener en cuenta dos detalles que nos ayudarán a poder buscar y ejecutar el comando que queremos: 
+* Mediante la tecla "Tab", es decir, el tabulador, podemos accer una predicción del comando (teniendo en cuenta lo de que 
+tiene que coincidir lo suficiente con algún comando para que el CLI nos autocomplete el comando) 
+* Si seguido del comando que queremos ejecutar introducimos el signo "**?**", nos cercioramos de que lo estamos escribiendo bien: 
+````console 
+ROUTER_SE(config)#hostname? 
+hostname 
+ROUTER_SE(config)#hostname
 ````
