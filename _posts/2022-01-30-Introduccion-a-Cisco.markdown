@@ -143,7 +143,7 @@ ROUTER_SE(config)#
 Se puede observar que a la hora de introducir ````configure terminal```` para acceder al modo de configuración global solo me ha bastado escribiendo el comando de una forma corta. El CLI de Cisco nos permite abreviar los comandos mientras existan coincidencias suficientes para saber qué comando es el que queremos ejecutar.
 
 También es importante tener en cuenta dos detalles que nos ayudarán a poder buscar y ejecutar el comando que queremos: 
-* Mediante la tecla "Tab", es decir, el tabulador, podemos hacer una predicción del comando (teniendo en cuenta lo de que 
+* Mediante la tecla "Tab" (tabulador), podemos hacer una predicción del comando (teniendo en cuenta lo de que 
 tiene que coincidir lo suficiente con algún comando para que el CLI nos autocomplete el comando) 
 * Si seguido del comando que queremos ejecutar introducimos el signo "**?**", nos cercioramos de que lo estamos escribiendo bien: 
 
