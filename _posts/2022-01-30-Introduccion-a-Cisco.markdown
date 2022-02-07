@@ -6,7 +6,7 @@ date:   2022-01-30 20:41:00 +0200
 categories: Cisco
 ---
 
-A partir de aquí empezaré una serie de post realizando configuraciones de switches y routers de Cisco. Mi idea es subir el contenido sin seguir un orden concreto, ya que no es mi intención hacer una especie de curso intensivo para preparar el CCNA ni nada de eso puesto que no soy CCNA (en estos momentos me encuentro preparándome para ello). Tampoco entraré en aspectos teóricos básicos a nivel de redes (salvo alguna excepción) por lo que mayoritariamente serán obviados. Lo que pretendo pues es subir distintos "laboratorios" que podeís encontrar en muchos sitios, aunque mi objetivo es explicarlos de tal manera que queden lo más claro posible según los conocimientos que yo he ido adquriendo.
+A partir de aquí empezaré una serie de post realizando configuraciones de switches y routers de Cisco. Mi idea es subir el contenido sin seguir un orden concreto, ya que no es mi intención hacer una especie de curso intensivo para preparar el CCNA ni nada de eso puesto que no soy CCNA (en estos momentos me encuentro preparándome para ello). Tampoco entraré en aspectos teóricos básicos a nivel de redes (salvo alguna excepción) por lo que mayoritariamente serán obviados. Lo que pretendo pues es subir distintos "laboratorios" que podeís encontrar en muchos sitios, aunque mi objetivo es explicarlos de tal manera que queden lo más claro posible según los conocimientos que yo he ido adquiriendo.
 
 Para los laboratorios utilizaré EVE-NG, ya que es el software de simulación de redes que más me gusta. Este software viene incluido en una máquina virtual, la cual se encargará de ejecutar a su vez todas las imágenes de los sistemas operativos de los dispositivos que iniciemos durante un laboratorio. Podeís descargar EVE-NG desde [aquí](https://www.eve-ng.net/). Para acceder se tiene que iniciar la máquina virtual. Esta contiene un sistema operativo GNU/LINUX (Ubuntu, en este caso). Como recomendación, deberiais darle un direccionamiento estático, ya que la manera de acceder a EVE-NG una vez encendida la máquina virtual es a través del navegador web escribriendo la dirección IP de la máquina virtual (por lo que no queremos que esta cambie en algún momento dado).
 
@@ -48,7 +48,7 @@ Ahora que hemos comprobado que todo está OK, se puede hacer uso de EVE-NG intro
 
 ![eve](https://i.ibb.co/qN222P1/introduccion-a-cisco-1.jpg "EVE-NG")
 
-Ahora que hemos realizado los preparativos para posteriormente hacer los laboratorios, es hora de entrar en materia con Cisco. Antes de empezar a hablar de configuraciones, lo primero es hablar de lo que es el dispositivo físicamente para tener una idea de su funcionamiento real. 
+Ahora que hemos realizado los preparativos para posteriormente hacer los laboratorios, es hora de entrar en materia con Cisco. Antes de empezar a hablar de configuraciones, creo que sería adecuado hablar de lo que es el dispositivo físicamente para tener una idea de su funcionamiento real. 
 
 La mayoría de dispositivos Cisco poseen tres tipos de puertos:
 
@@ -152,3 +152,19 @@ ROUTER_SE(config)#hostname?
 hostname 
 ROUTER_SE(config)#hostname
 ````
+Para ver las configuraciones que vayamos añadiendo ejecutamos ´´´´show running-config```` desde el modo privilegiado:
+
+````console
+Current configuration : 654 bytes
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname ROUTER_SE
+!
+boot-start-marker
+boot-end-marker
+````
+
+**IMPORTANTE**: como hemos dicho más arriba, dependiendo del modo que nos encontremos en la CLI podremos ejecutar unos comandos u otros. Si estamos en el modo configuración global y queremos ejectuar un ````show running-config```` o cualquier otro comando que corresponda al modo privilegiado desde el modo configuración global debemos añadir ````**do**```` al principio de cada ejecución para de esta manera hacer una llamada al modo privilegiado. Con esto no tenemos que estar saliendo del modo configuración global cada vez que queramos ejecutar algún ````show```` u otro comando del modo privilegiado, lo que nos es bastante más cómodo.
