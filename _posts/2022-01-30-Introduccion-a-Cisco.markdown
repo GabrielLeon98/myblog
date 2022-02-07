@@ -161,7 +161,7 @@ version 15.2
 service timestamps debug datetime msec
 service timestamps log datetime msec
 !
-hostname ROUTER_SE
+**hostname ROUTER_SE**
 !
 boot-start-marker
 boot-end-marker
