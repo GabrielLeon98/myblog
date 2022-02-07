@@ -152,7 +152,7 @@ ROUTER_SE(config)#hostname?
 hostname 
 ROUTER_SE(config)#hostname
 ````
-Para ver las configuraciones que vayamos añadiendo ejecutamos ´´´´show running-config```` desde el modo privilegiado:
+Para ver las configuraciones que vayamos añadiendo ejecutamos ````show running-config```` desde el modo privilegiado:
 
 ````console
 Current configuration : 654 bytes
@@ -167,4 +167,4 @@ boot-start-marker
 boot-end-marker
 ````
 
-**IMPORTANTE**: como hemos dicho más arriba, dependiendo del modo que nos encontremos en la CLI podremos ejecutar unos comandos u otros. Si estamos en el modo configuración global y queremos ejectuar un ````show running-config```` o cualquier otro comando que corresponda al modo privilegiado desde el modo configuración global debemos añadir ````**do**```` al principio de cada ejecución para de esta manera hacer una llamada al modo privilegiado. Con esto no tenemos que estar saliendo del modo configuración global cada vez que queramos ejecutar algún ````show```` u otro comando del modo privilegiado, lo que nos es bastante más cómodo.
+**IMPORTANTE**: como hemos dicho más arriba, dependiendo del modo que nos encontremos en la CLI podremos ejecutar unos comandos u otros. Si estamos en el modo configuración global y queremos ejectuar un ````show running-config```` o cualquier otro comando que corresponda al modo privilegiado desde el modo configuración global debemos añadir ````do```` al principio de cada ejecución para de esta manera hacer una llamada al modo privilegiado. Con esto no tenemos que estar saliendo del modo configuración global cada vez que queramos ejecutar algún ````show```` u otro comando del modo privilegiado, lo que nos es bastante más cómodo.
