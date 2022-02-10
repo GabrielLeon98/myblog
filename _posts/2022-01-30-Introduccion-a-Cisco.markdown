@@ -165,7 +165,6 @@ hostname ROUTER_SE
 boot-start-marker
 boot-end-marker
 ````
-
 **IMPORTANTE**: como hemos dicho más arriba, dependiendo del modo que nos encontremos en la CLI podremos ejecutar unos comandos u otros. Si estamos en el modo configuración global y queremos ejectuar un ````show running-config```` o cualquier otro comando que corresponda al modo privilegiado desde el modo configuración global debemos añadir ````do```` al principio de cada línea para de esta manera hacer una llamada al modo privilegiado. Con esto no tenemos que estar saliendo del modo configuración global cada vez que queramos ejecutar algún ````show```` u otro comando del modo privilegiado, lo que nos es bastante más cómodo.
 
 Saber hacer uso de los comandos ````show```` es de gran importancia a la hora de hacer cualquier tipo de diágnostico de fallos. Desde el modo usuario se permite ejecutar los comandos ````show```` de manera restringida, pero desde el modo privilegiado, la cantidad es mayor. Algunos de los comandos ````show```` que podemos ejecutar (desde el modo privilegiado) son:
@@ -174,7 +173,12 @@ Saber hacer uso de los comandos ````show```` es de gran importancia a la hora de
 * **show protocols**: muestra información del protocolo de capa 3 configurado y el estado por interfaz.
 * **show arp**: muestra la tabla ARP.
 * **show running-config**: muestra el contenido del archivo de configuración que se está ejecutando.
-* **show starup-config**: muestra el contenido del archivo almacenado en la NVRAM.
+* **show startup-config**: muestra el contenido del archivo almacenado en la NVRAM.
 * **show history**: muesta el historial de los comandos ejecutados.
 * **show flash**: muestra información sobre la memoria **flash** y los archivos almacenados.
 * **show version**: muestra información acerca del dispositivo, de la imagen IOS y del **registro de configuración** (del que ya se hablará en otro post).
+
+A continuación, vamos a restringir el acceso al modo privilegiado para dotar de cierta seguridad a nuestro dispositivo. Podemos hacerlo ejecutando dos comandos diferentes desde el modo de configuración global:
+
+* ````enable password *contraseña*````: la contraseña no es cifrada
+* ````enable secret *contraseña*````: es la manera recomendada. La contraseña es cifrada utilizando el algoritmo MD5.
