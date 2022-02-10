@@ -83,7 +83,7 @@ Finalmente hacemos clic en "Open" y entraremos en el CLI de Cisco:
 
 ![putty](https://i.ibb.co/8rDsLWq/introduccion-a-cisco-putty3.jpg "putty")
 
-Se puede apreciar en la imagen anterior que antes tuve que insertar una contraseña para poder entrar al CLI. Esto se hace estableciendo una contraseña para el acceso por consola, algo que veremos más adelante. La imagen mostrada corresponde a un router Cisco real que tengo por casa, ya que mediante EVE-NG no puedo hacer una demostración real para este caso.
+Se puede apreciar en la imagen anterior que antes tuve que insertar una contraseña para poder entrar al CLI. Esto se hace estableciendo una contraseña para el acceso por consola, algo que veremos más adelante, pero lo normal es que al inciar por primera vez un router Cisco nos pida primero una serie de configuraciones mínimas a través de un diálogo opcional llamado **Setup**. La anterior imagen mostrada corresponde a un router Cisco real que tengo por casa, ya que mediante EVE-NG no puedo hacer una demostración real para este caso.
 
 Es importante conocer algunas características en cuanto al hardware de Cisco. Los switches y routers de Cisco contienen:
 
@@ -130,7 +130,6 @@ Configure commands:
   cdp                         Global CDP configuration subcommands
  --More--
 ````
-
 Vamos ahora a realizar algunas configuraciones básicas: primero vamos a configurar un nombre al dispositivo. Esto es algo recomendado para así poder indentificar con mayor facilidad a los dispositivos en una red. Para ello debemos ir al modo de configuración global y ejecutamos: ````hostname nombredeldispositivo````.
 
 ````console 
@@ -161,10 +160,21 @@ version 15.2
 service timestamps debug datetime msec
 service timestamps log datetime msec
 !
-**hostname ROUTER_SE**
+hostname ROUTER_SE
 !
 boot-start-marker
 boot-end-marker
 ````
 
-**IMPORTANTE**: como hemos dicho más arriba, dependiendo del modo que nos encontremos en la CLI podremos ejecutar unos comandos u otros. Si estamos en el modo configuración global y queremos ejectuar un ````show running-config```` o cualquier otro comando que corresponda al modo privilegiado desde el modo configuración global debemos añadir ````do```` al principio de cada ejecución para de esta manera hacer una llamada al modo privilegiado. Con esto no tenemos que estar saliendo del modo configuración global cada vez que queramos ejecutar algún ````show```` u otro comando del modo privilegiado, lo que nos es bastante más cómodo.
+**IMPORTANTE**: como hemos dicho más arriba, dependiendo del modo que nos encontremos en la CLI podremos ejecutar unos comandos u otros. Si estamos en el modo configuración global y queremos ejectuar un ````show running-config```` o cualquier otro comando que corresponda al modo privilegiado desde el modo configuración global debemos añadir ````do```` al principio de cada línea para de esta manera hacer una llamada al modo privilegiado. Con esto no tenemos que estar saliendo del modo configuración global cada vez que queramos ejecutar algún ````show```` u otro comando del modo privilegiado, lo que nos es bastante más cómodo.
+
+Saber hacer uso de los comandos ````show```` es de gran importancia a la hora de hacer cualquier tipo de diágnostico de fallos. Desde el modo usuario se permite ejecutar los comandos ````show```` de manera restringida, pero desde el modo privilegiado, la cantidad es mayor. Algunos de los comandos ````show```` que podemos ejecutar (desde el modo privilegiado) son:
+
+* **show interfaces**: muestra información detallada de las interfaces.
+* **show protocols**: muestra información del protocolo de capa 3 configurado y el estado por interfaz.
+* **show arp**: muestra la tabla ARP.
+* **show running-config**: muestra el contenido del archivo de configuración que se está ejecutando.
+* **show starup-config**: muestra el contenido del archivo almacenado en la NVRAM.
+* **show history**: muesta el historial de los comandos ejecutados.
+* **show flash**: muestra información sobre la memoria **flash** y los archivos almacenados.
+* **show version**: muestra información acerca del dispositivo, de la imagen IOS y del **registro de configuración** (del que ya se hablará en otro post).
