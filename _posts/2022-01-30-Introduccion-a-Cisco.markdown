@@ -180,5 +180,5 @@ Saber hacer uso de los comandos ````show```` es de gran importancia a la hora de
 
 A continuación, vamos a restringir el acceso al modo privilegiado para dotar de cierta seguridad a nuestro dispositivo. Podemos hacerlo ejecutando dos comandos diferentes desde el modo de configuración global:
 
-* ````enable password *contraseña*````: la contraseña no es cifrada
-* ````enable secret *contraseña*````: es la manera recomendada. La contraseña es cifrada utilizando el algoritmo MD5.
+* ````enable password contraseña````: la contraseña no es cifrada.
+* ````enable secret contraseña````: es la manera recomendada. La contraseña es cifrada utilizando el algoritmo MD5..
