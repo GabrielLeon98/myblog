@@ -83,7 +83,15 @@ Finalmente hacemos clic en "Open" y entraremos en el CLI de Cisco:
 
 ![putty](https://i.ibb.co/8rDsLWq/introduccion-a-cisco-putty3.jpg "putty")
 
-Se puede apreciar en la imagen anterior que antes tuve que insertar una contraseña para poder entrar al CLI. Esto se hace estableciendo una contraseña para el acceso por consola, algo que veremos más adelante, pero lo normal es que al inciar por primera vez un router Cisco nos pida primero una serie de configuraciones mínimas a través de un diálogo opcional llamado **Setup**. La anterior imagen mostrada corresponde a un router Cisco real que tengo por casa, ya que mediante EVE-NG no puedo hacer una demostración real para este caso.
+Se puede apreciar en la imagen anterior que antes tuve que insertar una contraseña para poder entrar al CLI. Esto se hace estableciendo una contraseña para el acceso por consola, algo que veremos más adelante, pero lo normal es que al inciar por primera vez un router Cisco nos pida primero una serie de configuraciones mínimas a través de un diálogo opcional llamado **Setup**, como lo que aparece a continuación:
+
+````console
+   --- System Configuration Dialog ---
+
+Would you like to enter the initial configuration dialog? [yes/no]:
+````
+
+La anterior imagen mostrada corresponde a un router Cisco real que tengo por casa, ya que mediante EVE-NG no puedo hacer una demostración real para este caso.
 
 Es importante conocer algunas características en cuanto al hardware de Cisco. Los switches y routers de Cisco contienen:
 
@@ -182,3 +190,49 @@ A continuación, vamos a restringir el acceso al modo privilegiado para dotar de
 
 * ````enable password contraseña````: la contraseña no es cifrada.
 * ````enable secret contraseña````: es la manera recomendada. La contraseña es cifrada utilizando el algoritmo MD5..
+
+El hecho de que la contraseña sea cifrada es importante ya que si no lo hacemos, al ejecutar un ````show running-config```` o ````show startup-config```` en caso de tener la configuración almacenada, las contraseñas aparecerán en texto plano, por lo que si estamos manejando el dispositivo en presencia de alguien que no tiene permisos para acceder a estos, la persona podría ver la contraseña, lo cual pone en riesgo la seguridad de los equipos. Veamos la diferencia con un ejemplo real:
+
+* Usando ````enable password````:
+
+````console
+Current configuration : 676 bytes
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname ROUTER_SE
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable password cisco
+!
+no aaa new-model
+
+````
+Si nos fijamos, la contraseña aparece en texto plano.
+
+* Ahora vamos a hacer lo mismo pero con ````enable secret````:
+
+````console
+Current configuration : 714 bytes
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname ROUTER_SE
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 4 tnhtc92DXBhelxjYk8LWJrPV36S2i4ntXrpb4RFmfqY
+!
+
+````
+
+Como se puede apreciar, ahora la contraseña aparece cifrada.
