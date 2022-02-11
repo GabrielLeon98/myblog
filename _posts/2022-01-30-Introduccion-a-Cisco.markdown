@@ -236,3 +236,5 @@ enable secret 4 tnhtc92DXBhelxjYk8LWJrPV36S2i4ntXrpb4RFmfqY
 ````
 
 Como se puede apreciar, ahora la contraseña aparece cifrada.
+
+Existe una utilidad que nos permite cifrar cualquier contraseña almacenada en el equipo de forma automática sin tener que recurrir al comando ````enable````. Para hacer uso de esta utilidad, desde el modo de configuración global debemos ejecutar ````service password-encryption````, que encripta con un cifrado leve las contraseñas que no están cifradas por defecto (como las de telnet, consola, auxiliar, etc).
