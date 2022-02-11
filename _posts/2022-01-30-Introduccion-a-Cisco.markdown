@@ -190,6 +190,7 @@ A continuación, vamos a restringir el acceso al modo privilegiado para dotar de
 
 * ````enable password contraseña````: la contraseña no es cifrada.
 * ````enable secret contraseña````: es la manera recomendada. La contraseña es cifrada utilizando el algoritmo MD5.
+
 El hecho de que la contraseña sea cifrada es importante ya que si no lo hacemos, al ejecutar un ````show running-config```` o ````show startup-config```` en caso de tener la configuración almacenada, las contraseñas aparecerán en texto plano, por lo que si estamos manejando el dispositivo en presencia de alguien que no tiene permisos para acceder a estos, la persona podría ver la contraseña, lo cual pone en riesgo la seguridad de los equipos. Veamos la diferencia con un ejemplo real:
 
 * Usando ````enable password````:
@@ -236,4 +237,32 @@ enable secret 4 tnhtc92DXBhelxjYk8LWJrPV36S2i4ntXrpb4RFmfqY
 
 Como se puede apreciar, ahora la contraseña aparece cifrada.
 
-Existe una utilidad que nos permite cifrar cualquier contraseña almacenada en el equipo de forma automática sin tener que recurrir al comando ````enable secret````. Para hacer uso de esta utilidad, desde el modo de configuración global debemos ejecutar ````service password-encryption````, que encripta con un cifrado leve las contraseñas que no están cifradas por defecto (como las de telnet, consola, auxiliar, etc).
+Existe una utilidad que nos permite cifrar cualquier contraseña almacenada en el equipo de forma automática sin tener que recurrir al comando ````enable secret````. Para hacer uso de esta utilidad, desde el modo de configuración global debemos ejecutar el comando ````service password-encryption````, que encripta con un cifrado leve las contraseñas que no están cifradas por defecto (como las de telnet, consola, auxiliar, etc).
+
+Hemos configurado una contraseña para el acceso al modo privilegiado, ahora vamos a ver como configurar una contraseña para el acceso mediante los puertos de consola, auxiliar y para el acceso remoto:
+
+* Para el puerto de la consola, basta con ejecutar desde el modo de configuración global ````line console 0````. El 0 hace referencia a que solamente existe un puerto de consola en el dispositivo. Una vez ejecutado, debemos configurar la contraseña ejecutando ````password contraseñaquequeramos````. Para que la contraseña configurada tenga efecto, ha de ejecutarse seguidamente el comando ````login```` con la finalidad de que al ingresar por el puerto de la consola, se nos pida introducir la contraseña configurada previamente:
+````console
+ROUTER_SE>en
+Password:
+ROUTER_SE#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+ROUTER_SE(config)#line console 0
+ROUTER_SE(config-line)#password 1234
+ROUTER_SE(config-line)#login
+ROUTER_SE(config-line)#
+````
+
+Con haber configurado una contraseña para el puerto de consola y otra para acceder al modo privilegiado, el dispositivo estará algo más seguro:
+
+````console
+User Access Verification
+
+Password:
+ROUTER_SE>enable
+Password:
+ROUTER_SE#
+````
+
+* Para el puerto auxiliar el procedimiento es el mismo, tenemos que ejecutar desde el modo de configuración global ````line aux 0````. Igualmente que con el puerto de consola, el número 0 hace referencia a que solo hay un puerto auxiliar. Introducimos la contraseña con ````password contraseñaquequeramos```` y de nuevo ````login````.
+* Para el acceso remoto se han de configurar los puertos virtuales (**vty**), que son puerto utilizados para conexiones remotas a través de telnet o SSH. Para ello desde el modo de configuración global ejecutamos ````line vty 0 4````. En este caso, el 0 hace referencia al número de la interfaz y el 4 al número máximo de conexiones múltiples a partir de 0. En este caso se permiten 5 conexiones múltiples. Tras ello, ejecutamos ````password contraseñaquequeramos```` y por último login. Para probar el funcionamiento en este caso, se ha de tener configurada una dirección IP en alguna interfaz del dispositivo para probar la conexión remota, algo de lo que hablaremos a continuación. En otro post, hablaré también de cómo configurar SSH en un dispositivo Cisco.
