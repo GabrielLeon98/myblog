@@ -189,8 +189,7 @@ Saber hacer uso de los comandos ````show```` es de gran importancia a la hora de
 A continuación, vamos a restringir el acceso al modo privilegiado para dotar de cierta seguridad a nuestro dispositivo. Podemos hacerlo ejecutando dos comandos diferentes desde el modo de configuración global:
 
 * ````enable password contraseña````: la contraseña no es cifrada.
-* ````enable secret contraseña````: es la manera recomendada. La contraseña es cifrada utilizando el algoritmo MD5..
-
+* ````enable secret contraseña````: es la manera recomendada. La contraseña es cifrada utilizando el algoritmo MD5.
 El hecho de que la contraseña sea cifrada es importante ya que si no lo hacemos, al ejecutar un ````show running-config```` o ````show startup-config```` en caso de tener la configuración almacenada, las contraseñas aparecerán en texto plano, por lo que si estamos manejando el dispositivo en presencia de alguien que no tiene permisos para acceder a estos, la persona podría ver la contraseña, lo cual pone en riesgo la seguridad de los equipos. Veamos la diferencia con un ejemplo real:
 
 * Usando ````enable password````:
@@ -237,4 +236,4 @@ enable secret 4 tnhtc92DXBhelxjYk8LWJrPV36S2i4ntXrpb4RFmfqY
 
 Como se puede apreciar, ahora la contraseña aparece cifrada.
 
-Existe una utilidad que nos permite cifrar cualquier contraseña almacenada en el equipo de forma automática sin tener que recurrir al comando ````enable````. Para hacer uso de esta utilidad, desde el modo de configuración global debemos ejecutar ````service password-encryption````, que encripta con un cifrado leve las contraseñas que no están cifradas por defecto (como las de telnet, consola, auxiliar, etc).
+Existe una utilidad que nos permite cifrar cualquier contraseña almacenada en el equipo de forma automática sin tener que recurrir al comando ````enable secret````. Para hacer uso de esta utilidad, desde el modo de configuración global debemos ejecutar ````service password-encryption````, que encripta con un cifrado leve las contraseñas que no están cifradas por defecto (como las de telnet, consola, auxiliar, etc).
