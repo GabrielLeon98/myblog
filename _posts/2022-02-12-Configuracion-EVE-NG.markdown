@@ -2,7 +2,7 @@
 layout: post
 title:  "Configuración de EVE-NG"
 banner: "/assets/images/banners/eve-ng.png"
-date:   2022-02-12 10:00:00
+date:   2022-02-12 10:44:00 +0200
 categories: EVE-NG
 ---
 
