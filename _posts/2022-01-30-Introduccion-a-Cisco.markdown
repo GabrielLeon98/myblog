@@ -10,6 +10,8 @@ A partir de aquí empezaré una serie de post realizando configuraciones de swit
 
 Antes de empezar a hablar de configuraciones, creo que sería adecuado hablar de lo que es el dispositivo físicamente para tener una idea de su funcionamiento real. 
 
+# El dispositivo físico. Primera conexión
+
 La mayoría de dispositivos Cisco poseen tres tipos de puertos:
 
 * Puerto de consola
@@ -63,6 +65,8 @@ Es importante conocer algunas características en cuanto al hardware de Cisco. L
 Durante el arranque del dispositivo, este lleva a cabo unas rutinas de detección del hardware. Para estas rutinas se emplea el término **POST** (Power-on Selft Test). Una vez que se ha comprobado todo el hardware y este se encuentra operativo, se procede al arranque del sistema IOS. Tras cargar el sistema operativo, se cargan las configuraciones almacenadas en memoria (si las hay).
 
 A partir de ahora haremos algunas configuraciones básicas de inicio en nuestro dispositivo y veremos como poder guardar toda configuración introducida pero no sin antes hablar del CLI de Cisco.
+
+#Primeros pasos en el CLI del IOS de Cisco
 
 Existen 3 modos principales en el CLI de Cisco:
 
@@ -146,6 +150,8 @@ Saber hacer uso de los comandos ````show```` es de gran importancia a la hora de
 * **show flash**: muestra información sobre la memoria **flash** y los archivos almacenados.
 * **show version**: muestra información acerca del dispositivo, de la imagen IOS y del **registro de configuración** (del que ya se hablará en otro post).
 
+#Un poco de hardening
+
 A continuación, vamos a restringir el acceso al modo privilegiado para dotar de cierta seguridad a nuestro dispositivo. Podemos hacerlo ejecutando dos comandos diferentes desde el modo de configuración global:
 
 * ````enable password contraseña````: la contraseña no es cifrada.
@@ -201,7 +207,7 @@ Existe una utilidad que nos permite cifrar cualquier contraseña almacenada en e
 
 Hemos configurado una contraseña para el acceso al modo privilegiado, ahora vamos a ver como configurar una contraseña para el acceso mediante los puertos de consola, auxiliar y para el acceso remoto:
 
-* Para el puerto de la consola, basta con ejecutar desde el modo de configuración global ````line console 0````. El 0 hace referencia a que solamente existe un puerto de consola en el dispositivo. Una vez ejecutado, debemos configurar la contraseña ejecutando ````password contraseñaquequeramos````. Para que la contraseña configurada tenga efecto, ha de ejecutarse seguidamente el comando ````login```` con la finalidad de que al ingresar por el puerto de la consola, se nos pida introducir la contraseña configurada previamente:
+* Para el puerto de la consola, basta con ejecutar desde el modo de configuración global ````line console 0````. El 0 hace referencia a que solamente existe un puerto de consola en el dispositivo. Una vez dentro de la configuración del puerto, debemos asignar la contraseña ejecutando ````password contraseñaquequeramos````. Para que la contraseña configurada tenga efecto, ha de ejecutarse seguidamente el comando ````login```` con la finalidad de que al ingresar por el puerto de la consola, se nos pida introducir la contraseña configurada previamente:
 ````console
 ROUTER_SE>en
 Password:
@@ -225,4 +231,26 @@ ROUTER_SE#
 ````
 
 * Para el puerto auxiliar el procedimiento es el mismo, tenemos que ejecutar desde el modo de configuración global ````line aux 0````. Igualmente que con el puerto de consola, el número 0 hace referencia a que solo hay un puerto auxiliar. Introducimos la contraseña con ````password contraseñaquequeramos```` y de nuevo ````login````.
-* Para el acceso remoto se han de configurar los puertos virtuales (**vty**), que son puerto utilizados para conexiones remotas a través de telnet o SSH. Para ello desde el modo de configuración global ejecutamos ````line vty 0 4````. En este caso, el 0 hace referencia al número de la interfaz y el 4 al número máximo de conexiones múltiples a partir de 0. En este caso se permiten 5 conexiones múltiples. Tras ello, ejecutamos ````password contraseñaquequeramos```` y por último ````login````. Para probar el funcionamiento en este caso, se ha de tener configurada una dirección IP en alguna interfaz del dispositivo para probar la conexión remota, algo de lo que hablaremos a continuación. En otro post, hablaré también de cómo configurar SSH en un dispositivo Cisco.
+* Para el acceso remoto se han de configurar los puertos virtuales (**vty**), que son puertos utilizados para conexiones remotas a través de telnet o SSH. Para ello desde el modo de configuración global ejecutamos ````line vty 0 4````. En este caso, el 0 hace referencia al número de la interfaz y el 4 al número máximo de conexiones múltiples a partir de 0. En este caso se permiten 5 conexiones múltiples. Tras ello, ejecutamos ````password contraseñaquequeramos```` y por último ````login```` para que nos pida la contraseña al conectarnos. Para probar el funcionamiento en este caso, se ha de tener configurada una dirección IP en alguna interfaz del dispositivo para probar la conexión remota, algo de lo que hablaremos a continuación. En otro post, hablaré también de cómo configurar SSH en un dispositivo Cisco.
+````console
+ROUTER_SE#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+ROUTER_SE(config)#line vty 0 4
+ROUTER_SE(config-line)#password cisco
+ROUTER_SE(config-line)#
+````
+
+#Asignación de direcciones IP
+
+Vamos a ver ahora como podemos asignar direcciones IP a las distintas interfaces del dispositivo, aun que se han de tener en cuenta algunas diferencias a la hora de asignar direcciones IP a un router o a un switch.
+
+##Asignación de direcciones IP a un switch de Cisco.
+
+Para configurar una dirección IP en un switch de ha de hacer sobre una interfaz **vlan**. No quiero entrar demasiado en detalle con las vlan (al menos ahora), pero en todos los switches viene por defecto una vlan que es denominada la *vlan nativa* que corresponde a la vlan con el **ID** número 1. Esta vlan es considerada como la vlan de *administración*, al configurar una dirección IP a la *vlan 1* podremos administrar el switch remotamente por telnet o SSH. Para ello desde el modo de configuración global ejecutamos ````interface vlan 1```` para entrar al **modo de configuración de interfaz**, posteriormente, ejecutamos ````ip address IP Máscara`````quedando de tal manera:
+````console
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#interface vlan 1
+Switch(config-if)#ip address 192.168.0.20 255.255.255.0
+Switch(config-if)#
+````
