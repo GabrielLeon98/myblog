@@ -66,7 +66,7 @@ Durante el arranque del dispositivo, este lleva a cabo unas rutinas de detecció
 
 A partir de ahora haremos algunas configuraciones básicas de inicio en nuestro dispositivo y veremos como poder guardar toda configuración introducida pero no sin antes hablar del CLI de Cisco.
 
-#Primeros pasos en el CLI del IOS de Cisco
+# Primeros pasos en el CLI del IOS de Cisco
 
 Existen 3 modos principales en el CLI de Cisco:
 
@@ -150,7 +150,7 @@ Saber hacer uso de los comandos ````show```` es de gran importancia a la hora de
 * **show flash**: muestra información sobre la memoria **flash** y los archivos almacenados.
 * **show version**: muestra información acerca del dispositivo, de la imagen IOS y del **registro de configuración** (del que ya se hablará en otro post).
 
-#Un poco de hardening
+# Un poco de hardening
 
 A continuación, vamos a restringir el acceso al modo privilegiado para dotar de cierta seguridad a nuestro dispositivo. Podemos hacerlo ejecutando dos comandos diferentes desde el modo de configuración global:
 
@@ -240,11 +240,11 @@ ROUTER_SE(config-line)#password cisco
 ROUTER_SE(config-line)#
 ````
 
-#Asignación de direcciones IP
+# Asignación de direcciones IP
 
 Vamos a ver ahora como podemos asignar direcciones IP a las distintas interfaces del dispositivo, aun que se han de tener en cuenta algunas diferencias a la hora de asignar direcciones IP a un router o a un switch.
 
-##Asignación de direcciones IP a un switch de Cisco.
+## Asignación de direcciones IP a un switch de Cisco.
 
 Para configurar una dirección IP en un switch de ha de hacer sobre una interfaz **vlan**. No quiero entrar demasiado en detalle con las vlan (al menos ahora), pero en todos los switches viene por defecto una vlan que es denominada la *vlan nativa* que corresponde a la vlan con el **ID** número 1. Esta vlan es considerada como la vlan de *administración*, al configurar una dirección IP a la *vlan 1* podremos administrar el switch remotamente por telnet o SSH. Para ello desde el modo de configuración global ejecutamos ````interface vlan 1```` para entrar al **modo de configuración de interfaz**, posteriormente, ejecutamos ````ip address IP Máscara`````quedando de tal manera:
 ````console
