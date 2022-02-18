@@ -250,7 +250,7 @@ ROUTER_SE(config-line)#
 
 Vamos a ver ahora como podemos asignar direcciones IP a las distintas interfaces del dispositivo, aun que se han de tener en cuenta algunas diferencias a la hora de asignar direcciones IP a un router o a un switch.
 
-# Asignación de direcciones IP a un switch de Cisco.
+### Asignación de direcciones IP a un switch de Cisco.
 
 Para configurar una dirección IP en un switch de ha de hacer sobre una interfaz **vlan**. No quiero entrar demasiado en detalle con las vlan (al menos ahora), pero en todos los switches viene por defecto una vlan que es denominada la *vlan nativa* que corresponde a la vlan con el **ID** número 1. Esta vlan es considerada como la vlan de *administración*, al configurar una dirección IP a la *vlan 1* podremos administrar el switch remotamente por telnet o SSH. Para ello desde el modo de configuración global ejecutamos ````interface vlan 1```` para entrar al **modo de configuración de interfaz**, posteriormente, ejecutamos ````ip address IP Máscara`````quedando de tal manera:
 ````console
