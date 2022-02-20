@@ -10,9 +10,7 @@ A partir de aquí empezaré una serie de post realizando configuraciones de swit
 
 Antes de empezar a hablar de configuraciones, creo que sería adecuado hablar de lo que es el dispositivo físicamente para tener una idea de su funcionamiento real. 
 
-
 ## El dispositivo físico. Primera conexión
-
 
 La mayoría de dispositivos Cisco poseen tres tipos de puertos:
 
@@ -68,9 +66,7 @@ Durante el arranque del dispositivo, este lleva a cabo unas rutinas de detecció
 
 A partir de ahora haremos algunas configuraciones básicas de inicio en nuestro dispositivo y veremos como poder guardar toda configuración introducida pero no sin antes hablar del CLI de Cisco.
 
-
 ## Primeros pasos en el CLI del IOS de Cisco
-
 
 Existen 3 modos principales en el CLI de Cisco:
 
@@ -154,9 +150,7 @@ Saber hacer uso de los comandos ````show```` es de gran importancia a la hora de
 * **show flash**: muestra información sobre la memoria **flash** y los archivos almacenados.
 * **show version**: muestra información acerca del dispositivo, de la imagen IOS y del **registro de configuración** (del que ya se hablará en otro post).
 
-
 ## Un poco de hardening
-
 
 A continuación, vamos a restringir el acceso al modo privilegiado para dotar de cierta seguridad a nuestro dispositivo. Podemos hacerlo ejecutando dos comandos diferentes desde el modo de configuración global:
 
