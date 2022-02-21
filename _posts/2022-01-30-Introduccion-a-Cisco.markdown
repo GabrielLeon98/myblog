@@ -283,3 +283,26 @@ Switch(config-if)#
 ````
 
 Para volver a desactivar un puerto, ejecutamos ````shutdown````.
+
+## Asignación de direcciones IP a un router de Cisco
+
+Todo lo anterior es aplicable a un router de Cisco, solo que en este caso configuraremos interfaces Ethernet (o serial):
+````console
+ROUTER_SE#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+ROUTER_SE(config)#interface fas
+ROUTER_SE(config)#interface fastEthernet 0/0
+ROUTER_SE(config-if)#ip address 192.168.0.30 255.255.255.0
+ROUTER_SE(config-if)#no sh
+ROUTER_SE(config-if)#no shutdown
+ROUTER_SE(config-if)#
+*Feb 21 19:08:46.851: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Feb 21 19:08:47.851: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+ROUTER_SE(config-if)#
+````
+
+Los dispositivos Cisco llevan ranuras o slots donde se instalan los módulos de interfaces o para ampliar la cantidad de estos. Los slots y las interfaces son numerados de la siguiente manera:
+````console
+Router(config)# interface tipo slot/interfaz
+````
+
