@@ -6,7 +6,7 @@ date:   2022-01-30 20:41:00 +0200
 categories: Cisco
 ---
 
-A partir de aquí empezaré una serie de post realizando configuraciones de switches y routers de Cisco. Mi idea es subir el contenido sin seguir un orden concreto, ya que no es mi intención hacer una especie de curso intensivo para preparar el CCNA ni nada de eso puesto que no soy CCNA (en estos momentos me encuentro preparándome para ello). Tampoco entraré en aspectos teóricos básicos a nivel de redes (salvo alguna excepción) por lo que mayoritariamente serán obviados. Lo que pretendo pues es subir distintos "laboratorios" que podeís encontrar en muchos sitios, explicándolos de manera breve y concisa en base a los conocimientos que he ido adquiriendo. Para los laboratorios, usaré el software simulador de redes **EVE-NG**, cuya instalación y manejo explico en el post
+A partir de aquí empezaré una serie de post realizando configuraciones de switches y routers de Cisco. Mi idea es subir el contenido sin seguir un orden concreto, ya que no es mi intención hacer una especie de curso intensivo para preparar el CCNA ni nada de eso puesto que no soy CCNA (en estos momentos me encuentro preparándome para ello). Tampoco entraré en aspectos teóricos básicos a nivel de redes (salvo alguna excepción) por lo que mayoritariamente serán obviados. Lo que pretendo pues es subir distintos "laboratorios" que podeís encontrar en muchos sitios, explicándolos de manera breve y concisa en base a los conocimientos que he ido adquiriendo. Para los laboratorios, usaré el software simulador de redes **EVE-NG**, cuya instalación y manejo explico en el post ![post](https://www.gabriellv.com/eve-ng/2022/02/12/Configuracion-EVE-NG.html "Configuración de EVE-NG").
 
 Antes de empezar a hablar de configuraciones, creo que sería adecuado hablar de lo que es el dispositivo físicamente para tener una idea de su funcionamiento real. 
 
@@ -254,3 +254,17 @@ Switch(config)#interface vlan 1
 Switch(config-if)#ip address 192.168.0.20 255.255.255.0
 Switch(config-if)#
 ````
+
+Este método de direccionamiento es estático, pero tenemos la posibilidad de configurar un direccionamiento dinámico por medio de un servidor DHCP ejecutando ````ip address dhcp````. Con un servidor DHCP obtenemos los parámetros de red necesarios, pero de manera estática solamente proporcionamos un direccionamiento lógico al disposito, por lo que si queremos que el switch envíe paquetes a una red diferente a la administración, debemos configurar un gateway ejecutando desde el modo de configuración global ````ip default-gateway direccionIP````.
+
+Un detalle a tener en cuenta a la hora de configurar las interfaces o puertos de un dispositivo Cisco es que estas vienen en off, es decir, no están activas, por lo que a parte de configurarlas, debemos activarlas/encenderlas. Para ello tras la configuración debe ejecutarse desde el modo de configuración de interfaz ````no shutdown````:
+````console
+Switch(config)#interface vlan 1
+Switch(config-if)#no shutdown
+Switch(config-if)#
+*Feb 21 16:10:31.038: %LINK-3-UPDOWN: Interface Vlan1, changed state to up
+*Feb 21 16:10:32.050: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to up
+Switch(config-if)#
+````
+
+Para volver a desactivar un puerto, ejecutamos ````shutdown````.
