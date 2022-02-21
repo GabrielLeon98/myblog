@@ -284,7 +284,7 @@ Switch(config-if)#
 
 Para volver a desactivar un puerto, ejecutamos ````shutdown````.
 
-## Asignación de direcciones IP a un router de Cisco
+### Asignación de direcciones IP a un router de Cisco
 
 Todo lo anterior es aplicable a un router de Cisco, solo que en este caso configuraremos interfaces Ethernet (o serial):
 ````console
