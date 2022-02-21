@@ -57,6 +57,7 @@ La anterior imagen mostrada corresponde a un router Cisco real que tengo por cas
 
 Es importante conocer algunas características en cuanto al hardware de Cisco. Los switches y routers de Cisco contienen:
 
+* La **CPU**, que ejecuta las instrucciones del sistema operativo.
 * Una memoria **flash**, que es el equivalente a un disco duro en un PC. En ella se almacena el software IOS de Cisco.
 * Memoria **RAM** (Random Access Memory) en español, memoria de acceso aleatorio. En ella se guardan las configuraciones que están corriendo en un momento dado. Su contenido se pierde al apagar/reiniciar el dispositivo.
 * **NVRAM** (Non-Volatile Random Access Memory) en español, memoria de acceso aleatorio no volátil. En ella se guardan las configuraciones de inicio y su contenido no se pierde al apagar/reiniciar el dispositivo.
@@ -238,6 +239,20 @@ Enter configuration commands, one per line.  End with CNTL/Z.
 ROUTER_SE(config)#line vty 0 4
 ROUTER_SE(config-line)#password cisco
 ROUTER_SE(config-line)#
+````
+
+También existe la posibilidad de dar un añadido de seguridad creando usuarios con sus respectivas contraseñas con los que poder autenticarse a la hora de acceder a la configuración de los dispositivos. Para crear un usuario basta con ejecutar desde el modo de configuración global ````username usuario password contraseña````. De esta manera la contraseña aparecerá en texto plano. Existe otra posibilidad que es ejecutar ````username usuario secret contraseña```` y utilizará un algortimo MD5 para el cifrado de la contraseña:
+````console
+username pepe secret 4 tnhtc92DXBhelxjYk8LWJrPV36S2i4ntXrpb4RFmfqY
+````
+
+Si queremos que se nos pida autenticarnos a la hora de acceder al dispositivo por ssh o mediante el cable de consola, debemos ejecutar desde el modo de configuración de línea ````login local```` para que se habilite la base de datos local para la autenticación:
+````console
+User Access Verification
+
+Username: pepe
+Password:
+Switch>
 ````
 
 ## Asignación de direcciones IP
