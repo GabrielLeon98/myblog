@@ -308,8 +308,8 @@ Router(config)# interface tipo slot/interfaz
 
 Otros parámetros básicos de configuración para las interfaces son:
 
-* La velocidad de transmisión: ````speed [10|100|1000|auto].
-* El duplex: ````duplex [auto|full|half].
+* La velocidad de transmisión: ````speed [10|100|1000|auto]````.
+* El duplex: ````duplex [auto|full|half]````.
 
 Además, desde un router podemos crear interfaces lógicas llamadas subinterfaces que pueden ser usadas como interfaces independientes pero que se encuentran dentro de una interfaz física. Para ello desde el modo de configuración global ejecutamos ````interface número.número de interfaz````:
 ````console
