@@ -306,3 +306,31 @@ Los dispositivos Cisco llevan ranuras o slots donde se instalan los módulos de 
 Router(config)# interface tipo slot/interfaz
 ````
 
+Otros parámetros básicos de configuración para las interfaces son:
+
+* La velocidad de transmisión: ````speed [10|100|1000|auto].
+* El duplex: ````duplex [auto|full|half].
+
+Además, desde un router podemos crear interfaces lógicas llamadas subinterfaces que pueden ser usadas como interfaces independientes pero que se encuentran dentro de una interfaz física. Para ello desde el modo de configuración global ejecutamos ````interface número.número de interfaz````:
+````console
+ROUTER_SE(config)#interface f1/0
+ROUTER_SE(config-if)#no sh
+ROUTER_SE(config-if)#no shutdown
+ROUTER_SE(config-if)#
+*Feb 22 08:17:00.115: %LINK-3-UPDOWN: Interface FastEthernet1/0, changed state to up
+*Feb 22 08:17:01.115: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to up
+ROUTER_SE(config-if)#interface f1/0.1
+ROUTER_SE(config-subif)#
+````
+
+Es importante activar la interfaz física para que las interfaces lógica funcionen, ya que estas últimas dependen de la primera. Este tipo de interfaces son empleadas por ejemplo para realizar enrutamiento entre VLANs (ROAS), algo que ya veremos en otra ocasión.
+
+Tras realizar cualquier direccionamiento es posible verificarlo ejecutando el comando ````show ip interface brief```` desde el modo privilegiado (o desde el modo global añadiendo do por delante):
+````console
+ROUTER_SE(config)#do show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol
+FastEthernet0/0        192.168.0.30    YES NVRAM  up                    up
+FastEthernet1/0        unassigned      YES NVRAM  administratively down down
+FastEthernet2/0        unassigned      YES NVRAM  administratively down down
+ROUTER_SE(config)#
+````
