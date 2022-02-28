@@ -373,7 +373,7 @@ ROUTER_SE(config)#banner exec # Mensaje de advertencia #
 
 ## Guardar la configuración
 
-Como habíamos dicho al princio, las configuraciones realizadas son almacenadas en la memoria RAM, por lo que si el dipositivo es reiniciado o apagado, al volver a arrancarlo las configuraciones se habrán perdido. Para evitar perder la configuración en estos casos, se ha de almacenar la configuración en la memoria NVRAM. Para ello hacemos uso del comando `````copy```` seguido del origen de los datos a guardar y el destino, es decir, donde se guardará. Se puede guardar la configuración desde la RAM a la NVRAM, desde la RAM a un servidor TFTP, etc:
+Como habíamos dicho al princio, las configuraciones realizadas son almacenadas en la memoria RAM, por lo que si el dipositivo es reiniciado o apagado, al volver a arrancarlo las configuraciones se habrán perdido. Para evitar perder la configuración en estos casos, se ha de almacenar la configuración en la memoria NVRAM. Para ello hacemos uso del comando ````copy```` seguido del origen de los datos a guardar y el destino, es decir, donde se guardará. Se puede guardar la configuración desde la RAM a la NVRAM, desde la RAM a un servidor TFTP, etc:
 
 * Copia de la RAM a la NVRAM (desde el modo privilegiado):
 ````console
@@ -393,3 +393,5 @@ Destination filename [running-config]?
 892 bytes copied in 0.124 secs (7194 bytes/sec)
 ROUTER_SE#
 ```` 
+
+Recordemos que podemos ver tanto el **running-config** como el **startup-config** con el comando ````show````.
