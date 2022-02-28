@@ -241,6 +241,8 @@ ROUTER_SE(config-line)#password cisco
 ROUTER_SE(config-line)#
 ````
 
+### Creación de usuarios
+
 También existe la posibilidad de dar un añadido de seguridad creando usuarios con sus respectivas contraseñas con los que poder autenticarse a la hora de acceder a la configuración de los dispositivos. Para crear un usuario basta con ejecutar desde el modo de configuración global ````username usuario password contraseña````. De esta manera la contraseña aparecerá en texto plano. Existe otra posibilidad que es ejecutar ````username usuario secret contraseña```` y utilizará un algortimo MD5 para el cifrado de la contraseña:
 ````console
 username pepe secret 4 tnhtc92DXBhelxjYk8LWJrPV36S2i4ntXrpb4RFmfqY
@@ -261,7 +263,7 @@ Vamos a ver ahora como podemos asignar direcciones IP a las distintas interfaces
 
 ### Asignación de direcciones IP a un switch de Cisco.
 
-Para configurar una dirección IP en un switch de ha de hacer sobre una interfaz **vlan**. No quiero entrar demasiado en detalle con las vlan (al menos ahora), pero en todos los switches viene por defecto una vlan que es denominada la *vlan nativa* que corresponde a la vlan con el **ID** número 1. Esta vlan es considerada como la vlan de *administración*, al configurar una dirección IP a la *vlan 1* podremos administrar el switch remotamente por telnet o SSH. Para ello desde el modo de configuración global ejecutamos ````interface vlan 1```` para entrar al **modo de configuración de interfaz**, posteriormente, ejecutamos ````ip address IP Máscara`````quedando de tal manera:
+Para configurar una dirección IP en un switch se ha de hacer sobre una interfaz **vlan**. No quiero entrar demasiado en detalle con las vlan (al menos ahora), pero en todos los switches viene por defecto una vlan que es denominada la *vlan nativa* que corresponde a la vlan con el **ID** número 1. Esta vlan es considerada como la vlan de *administración*, al configurar una dirección IP a la *vlan 1* podremos administrar el switch remotamente por telnet o SSH. Para ello desde el modo de configuración global ejecutamos ````interface vlan 1```` para entrar al **modo de configuración de interfaz**, posteriormente, ejecutamos ````ip address IP Máscara`````quedando de tal manera:
 ````console
 Switch#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
@@ -286,7 +288,7 @@ Para volver a desactivar un puerto, ejecutamos ````shutdown````.
 
 ### Asignación de direcciones IP a un router de Cisco
 
-Todo lo anterior es aplicable a un router de Cisco, solo que en este caso configuraremos interfaces Ethernet (o serial):
+La manera de asignación de direcciones IP en un router de Cisco es igual que para un switch, solo que en el switch las direcciones tienen que configurarse para una vlan como interfaz. Para el router, en cambio, las direcciones IP se configuran para interfaces Ethernet (o serial):
 ````console
 ROUTER_SE#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
@@ -325,7 +327,7 @@ ROUTER_SE(config-subif)#
 
 Es importante activar la interfaz física para que las interfaces lógica funcionen, ya que estas últimas dependen de la primera. Este tipo de interfaces son empleadas por ejemplo para realizar enrutamiento entre VLANs (ROAS), algo que ya veremos en otra ocasión.
 
-Tras realizar cualquier direccionamiento es posible verificarlo ejecutando el comando ````show ip interface brief```` desde el modo privilegiado (o desde el modo global añadiendo do por delante):
+Tras realizar cualquier configuración de IP en alguna interfaz, es posible verificarlo ejecutando el comando ````show ip interface brief```` desde el modo privilegiado (o desde el modo global añadiendo do por delante):
 ````console
 ROUTER_SE(config)#do show ip interface brief
 Interface              IP-Address      OK? Method Status                Protocol
@@ -333,4 +335,38 @@ FastEthernet0/0        192.168.0.30    YES NVRAM  up                    up
 FastEthernet1/0        unassigned      YES NVRAM  administratively down down
 FastEthernet2/0        unassigned      YES NVRAM  administratively down down
 ROUTER_SE(config)#
+````
+
+Este comando nos muestra además información del estado de las interfaces: la columna **Status** se refiere a la capa física del modelo OSI, es decir, si esa interfaz está físicamente activa o no (up/down). Si nos muestra *down* puede deberse a que el cable está desconectado de la interfaz del propio dispositivo, el cable no funciona o que este se encuentra desconectado desde el otro extremo. *administratively down* en cambio quiere decir que nosotros mismos hemos desactivado la interfaz. La columna **Protocol** se basa en la capa dos del modelo OSI.
+
+En las interfaces pueden también asignarse un comentario informativo para identificar a una interfaz para una función concreta. Para ello, desde el modo de configuración de interfaz ejecutamos ````description comentario````:
+````console
+!
+interface FastEthernet0/0
+ description comentariodeprueba
+ ip address 192.168.0.30 255.255.255.0
+ duplex full
+!
+````
+
+### Banners
+
+Los banners son mensajes empleados para advertir sobre restricciones de uso del dispositivo desde un punto de vista legal. Además de advetir a posibles atacantes, advierten también a los propios administradores remotos para informar de las restricciones de uso. Para configurar un banner ha de hacerse desde el modo de configuración global:
+````console
+ROUTER_SE(config)#banner ?
+  LINE            c banner-text c, where 'c' is a delimiting character
+  config-save     Set message for saving configuration
+  exec            Set EXEC process creation banner
+  incoming        Set incoming terminal line banner
+  login           Set login banner
+  motd            Set Message of the Day banner
+  prompt-timeout  Set Message for login authentication timeout
+  slip-ppp        Set Message for SLIP/PPP
+
+ROUTER_SE(config)#banner
+````
+
+Se puede apreciar las diferentes opciones disponibles. La opción **exec** es útil para mostrar mensajes de administrador, ya que se presenta solo para usuarios autenticados:
+````console
+ROUTER_SE(config)#banner exec # Mensaje de advertencia #
 ````
