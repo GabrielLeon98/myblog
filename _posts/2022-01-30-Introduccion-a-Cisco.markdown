@@ -349,7 +349,7 @@ interface FastEthernet0/0
 !
 ````
 
-### Banners
+## Banners
 
 Los banners son mensajes empleados para advertir sobre restricciones de uso del dispositivo desde un punto de vista legal. Además de advetir a posibles atacantes, advierten también a los propios administradores remotos para informar de las restricciones de uso. Para configurar un banner ha de hacerse desde el modo de configuración global:
 ````console
