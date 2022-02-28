@@ -8,7 +8,7 @@ categories: Cisco
 
 A partir de aquí empezaré una serie de post realizando configuraciones de switches y routers de Cisco. Mi idea es subir el contenido sin seguir un orden concreto, ya que no es mi intención hacer una especie de curso intensivo para preparar el CCNA ni nada de eso puesto que no soy CCNA (en estos momentos me encuentro preparándome para ello). Tampoco entraré en aspectos teóricos básicos a nivel de redes (salvo alguna excepción) por lo que mayoritariamente serán obviados. Lo que pretendo pues es subir distintos "laboratorios" que podeís encontrar en muchos sitios, explicándolos de manera breve y concisa en base a los conocimientos que he ido adquiriendo. Para los laboratorios, usaré el software simulador de redes **EVE-NG**, cuya instalación y manejo explico en el post [Configuración de EVE-NG](https://www.gabriellv.com/eve-ng/2022/02/12/Configuracion-EVE-NG.html).
 
-Antes de empezar a hablar de configuraciones, creo que sería adecuado hablar de lo que es el dispositivo físicamente para tener una idea de su funcionamiento real. 
+En este primer post hablaré un poco de algunos conocimientos que considero que se han de tener acerca del funcionamiento del IOS de Cisco, sus comandos básicos, su funcionamiento, etc. Antes de empezar a hablar de configuraciones, creo que sería adecuado hablar de lo que es el dispositivo físicamente para tener una idea de su funcionamiento real. 
 
 ## El dispositivo físico. Primera conexión
 
