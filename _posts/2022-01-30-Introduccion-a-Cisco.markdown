@@ -325,7 +325,7 @@ ROUTER_SE(config-if)#interface f1/0.1
 ROUTER_SE(config-subif)#
 ````
 
-Es importante activar la interfaz física para que las interfaces lógica funcionen, ya que estas últimas dependen de la primera. Este tipo de interfaces son empleadas por ejemplo para realizar enrutamiento entre VLANs (ROAS), algo que ya veremos en otra ocasión.
+Es importante activar la interfaz física para que las interfaces lógicas funcionen, ya que estas últimas dependen de la primera. Este tipo de interfaces son empleadas por ejemplo para realizar enrutamiento entre VLANs (ROAS), algo que ya veremos en otra ocasión.
 
 Tras realizar cualquier configuración de IP en alguna interfaz, es posible verificarlo ejecutando el comando ````show ip interface brief```` desde el modo privilegiado (o desde el modo global añadiendo do por delante):
 ````console
