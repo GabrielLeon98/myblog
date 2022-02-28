@@ -396,7 +396,7 @@ ROUTER_SE#
 
 Recordemos que podemos ver tanto el **running-config** como el **startup-config** con el comando ````show````.
 
-## Realizad copia de seguridad del Cisco IOS
+## Realizar copia de seguridad del Cisco IOS
 
 Es importante tener almacenadas copias de seguridad del sistema operativo en un servidor central para tener como respaldo las imágenes del IOS de Cisco por si tenemos que tirar de ellas en algún momento dado. Lo que haremos será realizar las copias hacia un servidor TFTP.
 
