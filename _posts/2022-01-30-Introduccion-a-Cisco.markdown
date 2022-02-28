@@ -22,7 +22,7 @@ Los puertos Ethernet son a los que conectamos los equipos de la red, el puerto d
 
 Supongamos que tenemos un router Cisco que no ha sido usado previamente, por lo que no tiene configuración alguna. Lo primero es conectarnos mediante un cable de consola al router. El cable de consola contiene en un extremo un conector RJ-45 y en el otro un conector puerto serie DB9 hembra. Los PC de hoy en día ya no traen consigo puerto serie, por lo que si no disponemos de un ordenador que tenga puerto serie, existen adaptadores de puerto serie a USB que podemos comprar a un precio razonable.
 
-Una vez que tengamos conectado el cable de consola desde nuestro equipo al router accedemos a la CLI. En mi caso usaré PUTTY, donde seleccionaré el puerto COM (serie) adecuado y otras configuraciones. Yo estoy usando un adaptador de puerto serie a USB. Si usais un cable de este tipo debéis instalar el driver que os proporcione el fabricante.
+Una vez que tengamos conectado el cable de consola desde nuestro equipo al router accedemos a la CLI mediante un software emulador de terminal que tengamos en nuestro ordenador. En mi caso usaré PUTTY, donde seleccionaré el puerto COM (serie) adecuado y otras configuraciones que muestro a continuación. Yo uso un adaptador de puerto serie a USB. Si usais un cable de este tipo debéis instalar el driver que os proporcione el fabricante.
 
 Típicamente, los parámetros para la configuración del dispositivo 
 mediante cable de consola son: 
@@ -395,3 +395,33 @@ ROUTER_SE#
 ```` 
 
 Recordemos que podemos ver tanto el **running-config** como el **startup-config** con el comando ````show````.
+
+## Realizad copia de seguridad del Cisco IOS
+
+Es importante tener almacenadas copias de seguridad del sistema operativo en un servidor central para tener como respaldo las imágenes del IOS de Cisco por si tenemos que tirar de ellas en algún momento dado. Lo que haremos será realizar las copias hacia un servidor TFTP.
+
+Lo primero que debemos hacer es localizar el archivo a copiar en el servidor TFTP, en este caso la imagen IOS. Para ello ejecutamos ````show flash:````
+````console
+MyCisco#show flash:
+-#- --length-- -----date/time------ path
+1     55128676 Sep 26 2016 09:22:36 +00:00 c1900-universalk9-mz.SPA.151-4.M6.bin
+````
+Una vez localizado el archivo, hacemos la copia al servidor TFTP ejecutándo desde el modo privilegiado ````copy flash: tftp:````. Nos pedirá indicar el nombre del archivo a copiar, la dirección IP del servidor o su nombre y el nombre del archivo final tras la copia:
+````console
+MyCisco#copy flash: tftp:
+Source filename []?  c1900-universalk9-mz.SPA.151-4.M6.bin
+Address or name of remote host []? 192.168.100.20
+Destination filename [c1900-universalk9-mz.SPA.151-4.M6.bin]?
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+````
+
+También podemos exportar el **running-config** o el **startup-config** hacia el servidor TFTP:
+````console
+MyCisco#copy running-config tftp:
+Address or name of remote host []? 192.168.100.20
+Destination filename [mycisco-confg]?
+!!
+3478 bytes copied in 0.248 secs (14024 bytes/sec)
+
+MyCisco#
+````
