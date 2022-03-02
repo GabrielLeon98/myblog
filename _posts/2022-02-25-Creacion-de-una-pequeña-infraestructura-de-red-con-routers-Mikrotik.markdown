@@ -6,6 +6,8 @@ date:   2022-02-25 9:00:00 +0200
 categories: Mikrotik
 ---
 
+## Introducción
+
 En este post voy a mostrar la configuración de una pequeña infraestructura de una red la cual contiene los siguientes dispositivos:
 
 * Dos routers Mikrotik.
