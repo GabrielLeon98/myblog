@@ -54,7 +54,28 @@ Para asignar una IP a una interfaz concreta del Mirkotik, en el menú de la izqu
 
 Tras introducir correctamente los datos, hacemos click en *OK*:
 
-* 
+* **Router-1**:
+
+![iprouter1](https://i.ibb.co/b5JJL7h/mikrotik-1-3-A.jpg) 
+
+Comprobamos:
+
+![iprouter1](https://i.ibb.co/cYLDxkN/mikrotik-1-3-2.jpg)
+
+Si queremos realizar la misma tarea mediante comandos, debemos ir al menú de la$
+````terminal
+[admin@MikroTik] > ip/address/add address=192.168.41.254/24 interface=ether2
+````
+
+Y comprobamos ejecutando:
+````terminal
+[admin@MikroTik] > ip/address/print
+Columns: ADDRESS, NETWORK, INTERFACE
+# ADDRESS            NETWORK       INTERFACE
+0 192.168.21.254/24  192.168.21.0  ether1
+[admin@MikroTik] >
+````
+
 
 * **Router-2**:
 
