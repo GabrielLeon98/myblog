@@ -148,7 +148,7 @@ Abrimos el fichero ````/etc/network/interfaces````:
 
 Introducimos las siguientes líneas:
 
-`````terminal
+````terminal
 auto eth0
 iface eth0 inet static
 address 192.168.41.200
