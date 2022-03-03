@@ -40,7 +40,7 @@ Lo que haremos pues es conectarnos aprovechando el *MAC Server* y luego le darem
 
 ### Configuración de los routers
 
-Nos conectamos desde *Winbox*. Al abrir el programa, en la pestaña *Neighbors* vemos como nos detecta al router. Para conectarnos debemos seleccionar la dirección MAC del dispositivo y el usuario por defecto es admin (la contraseña la configuraremos tras entrar al router, por lo que al principio no tiene):
+Los pasos los repetiremos en ambos routers. Primero nos conectamos desde *Winbox*. Al abrir el programa, en la pestaña *Neighbors* vemos como nos detecta al router. Para conectarnos debemos seleccionar la dirección MAC del dispositivo y el usuario por defecto es admin (la contraseña la configuraremos tras entrar al router, por lo que al principio no tiene):
 
 ![conexionrouter](https://i.ibb.co/ph1vzqt/mikrotik-1-1.jpg)
 
@@ -48,9 +48,19 @@ Insertamos una contraseña para el usuario *admin*:
 
 ![configcontraseña](https://i.ibb.co/RjFBLnN/mikrotik-1-2.jpg)
 
+Como buena práctica, se recomienda dar un nombre concreto a los routers para que sea más fácil distinguirlos. Para ello vamos al menú de la izquierda en *Winbox* - *System* y vamos a *Identity* para introducir el nombre que identificará al router:
+
+![identity](https://i.ibb.co/GpsthPH/mikrotik-identity.jpg)
+
+O bien desde comandos, abriendo la consola haciendo clic en *New Terminal* en el menú de la izquierda:
+````terminal
+[admin@Mikrotik] > system/identity/set name=Router-A
+[admin@Router-A] >
+````
+
 Ahora lo que haremos será asignar las direcciones IP a las interfaces tal y como viene en el esquema.
 
-Para asignar una IP a una interfaz concreta del Mirkotik, en el menú de la izquierda de Winbox, vamos a IP – Addresess. Aquí veremos las direcciones IP asignadas a cada interfaz. Para añadir una nueva IP hacemos clic en *“+”*. Se nos abrirá una ventana en donde tendremos que introducir: dirección IP en formato CIDR, dirección de subred (se pone automáticamente) e interfaz respectivamente.
+Para asignar una IP a una interfaz concreta del Mikrotik, en el menú de la izquierda de Winbox, vamos a *IP* – *Addresess*. Aquí veremos las direcciones IP asignadas a cada interfaz. Para añadir una nueva IP hacemos clic en **+**. Se nos abrirá una ventana en donde tendremos que introducir: dirección IP en formato CIDR, dirección de subred (se pone automáticamente) e interfaz respectivamente.
 
 Tras introducir correctamente los datos, hacemos click en *OK*:
 
@@ -62,7 +72,7 @@ Comprobamos:
 
 ![iprouter1](https://i.ibb.co/cYLDxkN/mikrotik-1-3-2.jpg)
 
-Si queremos realizar la misma tarea mediante comandos, debemos ir al menú de la izquierda a New Terminal para abrir la consola del router e introducir el siguiente comando:
+Si queremos realizar la misma tarea mediante comandos:
 ````terminal
 [admin@MikroTik] > ip/address/add address=192.168.41.254/24 interface=ether2
 ````
@@ -85,7 +95,7 @@ Comprobamos:
 
 ![iprouter2](https://i.ibb.co/Gc1k4gC/mikrotik-1-3-1.jpg)
 
-Si queremos realizar la misma tarea mediante comandos, debemos ir al menú de la izquierda a *New Terminal* para abrir la consola del router e introducir el siguiente comando:
+Si queremos realizar la misma tarea mediante comando:
 ````terminal
 [admin@MikroTik] > ip/address/add address=192.168.41.254/24 interface=ether2
 ````
