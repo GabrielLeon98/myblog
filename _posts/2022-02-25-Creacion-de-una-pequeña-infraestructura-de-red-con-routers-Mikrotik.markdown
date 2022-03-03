@@ -66,7 +66,7 @@ Tras introducir correctamente los datos, hacemos click en *OK*:
 
 * **Router-SE**:
 
-![iprouterSE](https://i.ibb.co/b5JJL7h/mikrotik-1-3-A.jpg) 
+![iprouterSE](https://i.ibb.co/kGB5Ltd/mikrotik-direccionamiento-SE.jpg) 
 
 Comprobamos:
 
@@ -87,9 +87,9 @@ Columns: ADDRESS, NETWORK, INTERFACE
 ````
 
 
-* **Router-2**:
+* **Router-BACLN**:
 
-![iprouter2](https://i.ibb.co/B41QL6n/mikrotik-1-3.jpg)
+![iprouter2](https://i.ibb.co/zhN4QpG/mikrotik-direccionamiento-BACLN.jpg)
 
 Comprobamos:
 
@@ -112,6 +112,7 @@ Columns: ADDRESS, NETWORK, INTERFACE
 Podemos aprovechar para asignar a cada router la dirección IP para en enlace WAN. El procedimiento es el mismo:
 
 * **Router-SE**:
-![ipwanA]()
+![ipwanSE](https://i.ibb.co/4t9f8pM/wan-se.jpg)
 
 * **Router-BACLN**:
+![ipwanBACLN](https://i.ibb.co/qmLpdVt/wan-bacln.jpg)
