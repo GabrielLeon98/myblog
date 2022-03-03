@@ -97,7 +97,7 @@ Comprobamos:
 
 Si queremos realizar la misma tarea mediante comando:
 ````terminal
-[admin@Router-B] > ip/address/add address=192.168.41.254/24 interface=ether2
+[admin@Router-BACLN] > ip/address/add address=192.168.41.254/24 interface=ether2
 ````
 
 Y comprobamos ejecutando:
