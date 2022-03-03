@@ -34,7 +34,7 @@ Una vez dada esta pequeña introducción, empezemos pues con las configuraciones
 
 ## Configuración de los routers y de los equipos
 
-Vamos a empezar dando direcciones IP a los routers. Para ello nos conectaremos desde los equipos usando *Winbox* a los routers. Estos routers tienen habilitado por defecto una función llamada *MAC Server* la cual nos permite conectarnos a los routers teniendo en cuenta únicamente la MAC de la interfaz del router que está conectada al mismo switch al que estamos conectados, por lo que no se requiere que tanto el router como el equipo desde el que nos conectamos tengan una dirección IP de la misma subred. Esto es una brecha de seguridad puesto que de esta manera se permite que cualquier equipo aún teniendo una IP de otra subred pueda conectarse, por lo que esta opción la deshabilitaremos. Los routers Mikrotik suelen traer por defecto la dirección IP 192.168.88.1/24, aun que en este caso no la tienen, por lo que se la pondremos nosotros mismos.
+Vamos a empezar dando direcciones IP a los routers. Para ello nos conectaremos desde los equipos usando *Winbox* a los routers. Estos routers tienen habilitado por defecto una función llamada *MAC Server* la cual nos permite conectarnos a los routers teniendo en cuenta únicamente la MAC de la interfaz del router que está conectada al mismo switch al que estamos conectados, por lo que no se requiere que tanto el router como el equipo desde el que nos conectamos tengan una dirección IP de la misma subred. Esto es una brecha de seguridad puesto que de esta manera se permite que cualquier equipo aún teniendo una IP de otra subred pueda conectarse, por lo que esta opción la deshabilitaremos. Los routers Mikrotik suelen traer por defecto la dirección IP 192.168.88.1/24, aun que en este caso no la tienen pero podemos ponérselas si queremos.
 
 Lo que haremos pues es conectarnos aprovechando el *MAC Server* y luego le daremos una dirección IP a las interfaces respentando el direccionamiento que viene en el esquema:
 
@@ -60,7 +60,7 @@ O bien desde comandos, abriendo la consola haciendo clic en *New Terminal* en el
 
 Ahora lo que haremos será asignar las direcciones IP a las interfaces tal y como viene en el esquema.
 
-Para asignar una IP a una interfaz concreta del Mikrotik, en el menú de la izquierda de Winbox, vamos a *IP* – *Addresess*. Aquí veremos las direcciones IP asignadas a cada interfaz. Para añadir una nueva IP hacemos clic en **+**. Se nos abrirá una ventana en donde tendremos que introducir: dirección IP en formato CIDR, dirección de subred (se pone automáticamente) e interfaz respectivamente.
+Para asignar una IP a una interfaz concreta del Mikrotik, en el menú de la izquierda de *Winbox*, vamos a *IP* – *Addresess*. Aquí veremos las direcciones IP asignadas a cada interfaz. Para añadir una nueva IP hacemos clic en **+** donde se nos abrirá una ventana en donde tendremos que introducir: dirección IP y máscara en formato CIDR, dirección de subred (se pone automáticamente) e interfaz respectivamente.
 
 Tras introducir correctamente los datos, hacemos click en *OK*:
 
@@ -116,3 +116,20 @@ Podemos aprovechar para asignar a cada router la dirección IP para en enlace WA
 
 * **Router-BACLN**:
 ![ipwanBACLN](https://i.ibb.co/qmLpdVt/wan-bacln.jpg)
+
+Una vez introducidas las direcciones IP en los routers, vamos a deshabilitar el *MAC Server* y accederemos a ellos mediante las direcciones IP que hemos puesto (aun que antes tendremos que darle una dirección IP válida a los clinetes). Para deshabilitar el *MAC Server* vamos a *Tools* - *MAC Server* y hacemos clic en **MAC WinBox Server**. En *Allowed Interface List* seleccionamos **none**:
+
+![macserver](https://i.ibb.co/fXRKc4s/mac-server.jpg)
+
+
+### Configuración de los clientes
+
+Ahora para acceder a *Winbox* debemos configurar en los clientes una dirección IP de la misma subred. Pondremos las mismas que aparecen en el esquema.
+
+* **Cliente 1**:
+
+![ipcliente1](https://i.ibb.co/THYSYhv/cliente-1.jpg)
+
+* **Cliente 2**:
+
+![ipcliente2](https://i.ibb.co/PtKcQLD/cliente-2.jpg)
