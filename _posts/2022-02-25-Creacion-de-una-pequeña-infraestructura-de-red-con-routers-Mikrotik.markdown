@@ -74,16 +74,16 @@ Comprobamos:
 
 Si queremos realizar la misma tarea mediante comandos:
 ````terminal
-[admin@MikroTik] > ip/address/add address=192.168.41.254/24 interface=ether2
+[admin@Router-A] > ip/address/add address=192.168.41.254/24 interface=ether2
 ````
 
 Y comprobamos ejecutando:
 ````terminal
-[admin@MikroTik] > ip/address/print
+[admin@Router-A] > ip/address/print
 Columns: ADDRESS, NETWORK, INTERFACE
 # ADDRESS            NETWORK       INTERFACE
 0 192.168.21.254/24  192.168.21.0  ether1
-[admin@MikroTik] >
+[admin@Router-A] >
 ````
 
 
@@ -97,15 +97,15 @@ Comprobamos:
 
 Si queremos realizar la misma tarea mediante comando:
 ````terminal
-[admin@MikroTik] > ip/address/add address=192.168.41.254/24 interface=ether2
+[admin@Router-B] > ip/address/add address=192.168.41.254/24 interface=ether2
 ````
 
 Y comprobamos ejecutando:
 ````terminal
-[admin@MikroTik] > ip/address/print
+[admin@Router-B] > ip/address/print
 Columns: ADDRESS, NETWORK, INTERFACE
 # ADDRESS            NETWORK       INTERFACE
 0 192.168.41.254/24  192.168.41.0  ether2
-[admin@MikroTik] >
+[admin@Router-B] >
 ````
 
