@@ -137,3 +137,13 @@ Ahora para acceder a *Winbox* debemos configurar en los clientes una dirección 
 * **Cliente 2**:
 
 ![ipcliente2](https://i.ibb.co/PtKcQLD/cliente-2.jpg)
+
+* **Servidor**:
+
+El servidor usa una distribución Ubuntu Mate. Para configurar una dirección IP desde la terminal como *root* realizamos los siguientes pasos:
+
+** Abrimos el fichero ````/etc/network/interfaces````:
+
+![serv1](https://i.ibb.co/Z1Mr2Br/serv1.jpg)
+
+Si se observa las capturas anteriores, hemos aprovechado para poner las puertas de enlace para que posteriormente podamos enviar paquetes de una subred a otra.
