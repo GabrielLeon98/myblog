@@ -15,7 +15,7 @@ En este post voy a mostrar la configuración de una pequeña infraestructura de 
 * Un equipo con un sistema operativo Linux que hará de servidor.
 * Dos switches.
 
-La infraestructura a nivel de conexiones está compuesta por:
+La infraestructura a su vez se encuentra dividida por:
 
 * Dos redes LAN.
 * Un enlace entre los dos routers que simula un entorno WAN.
@@ -34,14 +34,47 @@ Una vez dada esta pequeña introducción, empezemos pues con las configuraciones
 
 ## Configuración de los routers y de los equipos
 
-Vamos a empezar dando direcciones IP a los routers. Para ello nos conectaremos desde los equipos usando *Winbox* a los routers. Estos routers tienen habilitado por defecto una función llamada *MAC Server* la cual nos permite conectarnos a los routers teniendo en cuenta únicamente la MAC de la interfaz del router que está conectada al mismo switch al que estamos conectados. Esto es una brecha de seguridad puesto que de esta manera se permite que cualquier equipo aún teniendo una IP de otra subred pueda conectarse, por lo que esta opción la deshabilitaremos. Los routers Mikrotik suelen traer por defecto la dirección IP 192.168.88.1/24, aun que en este caso no la tienen, por lo que se la pondremos nosotros mismos.
+Vamos a empezar dando direcciones IP a los routers. Para ello nos conectaremos desde los equipos usando *Winbox* a los routers. Estos routers tienen habilitado por defecto una función llamada *MAC Server* la cual nos permite conectarnos a los routers teniendo en cuenta únicamente la MAC de la interfaz del router que está conectada al mismo switch al que estamos conectados, por lo que no se requiere que tanto el router como el equipo desde el que nos conectamos tengan una dirección IP de la misma subred. Esto es una brecha de seguridad puesto que de esta manera se permite que cualquier equipo aún teniendo una IP de otra subred pueda conectarse, por lo que esta opción la deshabilitaremos. Los routers Mikrotik suelen traer por defecto la dirección IP 192.168.88.1/24, aun que en este caso no la tienen, por lo que se la pondremos nosotros mismos.
 
-Lo que haremos pues es conectarnos utilizando en este caso el *MAC Server* y luego le daremos una dirección IP a las interfaces respentando el direccionamiento que viene en el esquema:
+Lo que haremos pues es conectarnos aprovechando el *MAC Server* y luego le daremos una dirección IP a las interfaces respentando el direccionamiento que viene en el esquema:
 
 ### Configuración de los routers
 
-Nos conectamos desde *Winbox*
+Nos conectamos desde *Winbox*. Al abrir el programa, en la pestaña *Neighbors* vemos como nos detecta al router. Para conectarnos debemos seleccionar la dirección MAC del dispositivo y el usuario por defecto es admin (la contraseña la configuraremos tras entrar al router, por lo que al principio no tiene):
 
 ![conexionrouter](https://i.ibb.co/ph1vzqt/mikrotik-1-1.jpg)
 
+Insertamos una contraseña para el usuario *admin*:
+
+![configcontraseña](https://i.ibb.co/RjFBLnN/mikrotik-1-2.jpg)
+
+Ahora lo que haremos será asignar las direcciones IP a las interfaces tal y como viene en el esquema.
+
+Para asignar una IP a una interfaz concreta del Mirkotik, en el menú de la izquierda de Winbox, vamos a IP – Addresess. Aquí veremos las direcciones IP asignadas a cada interfaz. Para añadir una nueva IP hacemos clic en *“+”*. Se nos abrirá una ventana en donde tendremos que introducir: dirección IP en formato CIDR, dirección de subred (se pone automáticamente) e interfaz respectivamente.
+
+Tras introducir correctamente los datos, hacemos click en *OK*:
+
+* 
+
+* **Router-2**:
+
+![iprouter2](https://i.ibb.co/B41QL6n/mikrotik-1-3.jpg)
+
+Comprobamos:
+
+![iprouter2](https://i.ibb.co/Gc1k4gC/mikrotik-1-3-1.jpg)
+
+Si queremos realizar la misma tarea mediante comandos, debemos ir al menú de la izquierda a *New Terminal* para abrir la consola del router e introducir el siguiente comando:
+````terminal
+[admin@MikroTik] > ip/address/add address=192.168.41.254/24 interface=ether2
+````
+
+Y comprobamos ejecutando:
+````terminal
+[admin@MikroTik] > ip/address/print
+Columns: ADDRESS, NETWORK, INTERFACE
+# ADDRESS            NETWORK       INTERFACE
+0 192.168.41.254/24  192.168.41.0  ether2
+[admin@MikroTik] >
+````
 
