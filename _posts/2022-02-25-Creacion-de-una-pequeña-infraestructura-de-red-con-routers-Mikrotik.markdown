@@ -121,6 +121,10 @@ Una vez introducidas las direcciones IP en los routers, vamos a deshabilitar el 
 
 ![macserver](https://i.ibb.co/fXRKc4s/mac-server.jpg)
 
+O bien desde la terminal:
+````terminal
+[admin@Router-SE] > tool/mac-server/mac-winbox/set allowed-interface-list=none
+````
 
 ### Configuración de los clientes
 
