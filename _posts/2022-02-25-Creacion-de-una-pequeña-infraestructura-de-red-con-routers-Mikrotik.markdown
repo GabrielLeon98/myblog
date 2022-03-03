@@ -62,7 +62,7 @@ Comprobamos:
 
 ![iprouter1](https://i.ibb.co/cYLDxkN/mikrotik-1-3-2.jpg)
 
-Si queremos realizar la misma tarea mediante comandos, debemos ir al menú de la$
+Si queremos realizar la misma tarea mediante comandos, debemos ir al menú de la izquierda a New Terminal para abrir la consola del router e introducir el siguiente comando:
 ````terminal
 [admin@MikroTik] > ip/address/add address=192.168.41.254/24 interface=ether2
 ````
