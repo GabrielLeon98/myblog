@@ -50,12 +50,12 @@ Insertamos una contraseña para el usuario *admin*:
 
 Como buena práctica, se recomienda dar un nombre concreto a los routers para que sea más fácil distinguirlos. Para ello vamos al menú de la izquierda en *Winbox* - *System* y vamos a *Identity* para introducir el nombre que identificará al router:
 
-![identity](https://i.ibb.co/GpsthPH/mikrotik-identity.jpg)
+![identity](https://i.ibb.co/qnjdpPp/mikrotik-identity.jpg)
 
 O bien desde comandos, abriendo la consola haciendo clic en *New Terminal* en el menú de la izquierda:
 ````terminal
-[admin@Mikrotik] > system/identity/set name=Router-A
-[admin@Router-A] >
+[admin@Mikrotik] > system/identity/set name=Router-SE
+[admin@Router-SE] >
 ````
 
 Ahora lo que haremos será asignar las direcciones IP a las interfaces tal y como viene en el esquema.
@@ -64,9 +64,9 @@ Para asignar una IP a una interfaz concreta del Mikrotik, en el menú de la izqu
 
 Tras introducir correctamente los datos, hacemos click en *OK*:
 
-* **Router-1**:
+* **Router-SE**:
 
-![iprouter1](https://i.ibb.co/b5JJL7h/mikrotik-1-3-A.jpg) 
+![iprouterSE](https://i.ibb.co/b5JJL7h/mikrotik-1-3-A.jpg) 
 
 Comprobamos:
 
@@ -74,16 +74,16 @@ Comprobamos:
 
 Si queremos realizar la misma tarea mediante comandos:
 ````terminal
-[admin@Router-A] > ip/address/add address=192.168.41.254/24 interface=ether2
+[admin@Router-SE] > ip/address/add address=192.168.41.254/24 interface=ether2
 ````
 
 Y comprobamos ejecutando:
 ````terminal
-[admin@Router-A] > ip/address/print
+[admin@Router-SE] > ip/address/print
 Columns: ADDRESS, NETWORK, INTERFACE
 # ADDRESS            NETWORK       INTERFACE
 0 192.168.21.254/24  192.168.21.0  ether1
-[admin@Router-A] >
+[admin@Router-SE] >
 ````
 
 
@@ -102,10 +102,16 @@ Si queremos realizar la misma tarea mediante comando:
 
 Y comprobamos ejecutando:
 ````terminal
-[admin@Router-B] > ip/address/print
+[admin@Router-BACLN] > ip/address/print
 Columns: ADDRESS, NETWORK, INTERFACE
 # ADDRESS            NETWORK       INTERFACE
 0 192.168.41.254/24  192.168.41.0  ether2
-[admin@Router-B] >
+[admin@Router-BACLN] >
 ````
 
+Podemos aprovechar para asignar a cada router la dirección IP para en enlace WAN. El procedimiento es el mismo:
+
+* **Router-SE**:
+![ipwanA]()
+
+* **Router-BACLN**:
