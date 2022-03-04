@@ -191,7 +191,6 @@ O desde el terminal:
    max-rtt=1ms198us
 
 [admin@Router-SE] >
-
 ````
 
 ### Creación de la entrada estática en la tabla de rutas
@@ -211,7 +210,6 @@ Columns: DST-ADDRESS, GATEWAY, DISTANCE
 DAc 1.1.1.0/24       ether2          0
 DAc 192.168.21.0/24  ether1          0
 [admin@Router-SE] >
-
 ````
 
 Podemos observar que hay 2 entradas. Estas corresponden a redes directamente conectadas que el propio router añade al configurarles una dirección IP en esas subredes (se pueden detectar por la letra D). Ahora vamos a añadir una entrada estática en la tabla de rutas. Para ello hacemos clic en + y debemos añadir:
