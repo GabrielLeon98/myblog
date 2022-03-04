@@ -193,3 +193,47 @@ O desde el terminal:
 [admin@Router-SE] >
 
 ````
+
+### Creación de la entrada estática en la tabla de rutas
+
+Una vez comprobado que hay conectividad vamos a crear las entradas estáticas en la tabla de rutas de ambos routers. La entrada ha de crearse en ambos ya que los dos deben conocer las subredes de destino para que se puedan enviar y recibir paquetes.
+
+Para ello, desde *Winbox* vamos a *IP* - *Routes*:
+
+![routelistSE](https://i.ibb.co/99dTwPV/route-list.jpg)
+
+O desde el terminal:
+````terminal
+[admin@Router-SE] > ip/route/print
+Flags: D - DYNAMIC; A - ACTIVE; c, y - COPY
+Columns: DST-ADDRESS, GATEWAY, DISTANCE
+    DST-ADDRESS      GATEWAY  DISTANCE
+DAc 1.1.1.0/24       ether2          0
+DAc 192.168.21.0/24  ether1          0
+[admin@Router-SE] >
+
+````
+
+Podemos observar que hay 2 entradas. Estas corresponden a redes directamente conectadas que el propio router añade al configurarles una dirección IP en esas subredes (se pueden detectar por la letra D). Ahora vamos a añadir una entrada estática en la tabla de rutas. Para ello hacemos clic en + y debemos añadir:
+
+* Subred de destino y máscara en formato CIDR.
+* Puerta de enlace o próximo salto (router a atravesar).
+
+Hacemos lo mismo para ambos routers:
+
+* **Router-SE**:
+![rutaestaticaSE](https://i.ibb.co/pfN44Wk/rutaestatica-SE.jpg)
+
+Desde el terminal:
+````terminal
+[admin@Router-SE] > ip/route/add dst-address=192.168.41.0/24 gateway=1.1.1.41
+````
+
+* **Router-BACLN**:
+![rutaestaticaBACLN](https://i.ibb.co/WGwWXcv/ritaestatica-BACLN.jpg)
+
+Desde el terminal:
+````terminal
+[admin@Router-BACLN] > ip/route/add dst-address=192.168.21.0/24 gateway=1.1.1.21
+````
+
