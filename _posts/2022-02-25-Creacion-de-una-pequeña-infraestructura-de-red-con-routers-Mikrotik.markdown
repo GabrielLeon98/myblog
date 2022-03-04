@@ -12,7 +12,7 @@ En este post voy a mostrar la configuración de una pequeña infraestructura de 
 
 * Dos routers Mikrotik.
 * Dos equipos clientes con un Windows 7.
-* Un equipo con un sistema operativo Linux que hará de servidor.
+* Un equipo con un sistema operativo Linux que hará de servidor (contiene servidor web y SSH).
 * Dos switches.
 
 La infraestructura a su vez se encuentra dividida por:
@@ -160,3 +160,36 @@ gateway 192.168.41.254
 Por último reinicamos el servicio de red ejecutando ````/etc/init.d/networking restart````.
 
 Si se observa las capturas anteriores, tanto en los clientes como en el servidor hemos aprovechado para poner las puertas de enlace para que posteriormente podamos enviar paquetes de una subred a otra.
+
+## Enrutamiento estático
+
+Desde **Cliente 2** podemos ver la página del servidor web simplemente introduciendo la dirección IP de este en un navegador web:
+
+![servidor1](https://i.ibb.co/kXBRRC1/servidor-1.jpg)
+
+De igual manera podemos acceder remotamente a través de SSH: 
+
+![servidor2](https://i.ibb.co/DQqWSjn/servidor-2.jpg)
+
+Si queremos hacer lo mismo pero desde **Cliente 1**, debemos configurar algún enrutamiento, es decir, debemos indicar a los routers que camino tomar para llegar a una subred de destino. Como solamente son dos routers, configuraremos un enrutamiento estático.
+
+### Comprobación de conectividad
+
+Antes que nada vamos a comprobar que el enlace está bien configurado. Para ello vamos a hacer ping desde uno de los routers. Podemos hacerlo o bien desde *Winbox* en *Tools* - *Ping*:
+
+![ping1]()
+
+O desde el terminal:
+````terminal
+[admin@Router-SE] > ping 1.1.1.41
+  SEQ HOST                                     SIZE TTL TIME       STATUS
+    0 1.1.1.41                                   56  64 623us
+    1 1.1.1.41                                   56  64 626us
+    2 1.1.1.41                                   56  64 693us
+    3 1.1.1.41                                   56  64 1ms198us
+    sent=4 received=4 packet-loss=0% min-rtt=623us avg-rtt=785us
+   max-rtt=1ms198us
+
+[admin@Router-SE] >
+
+````
