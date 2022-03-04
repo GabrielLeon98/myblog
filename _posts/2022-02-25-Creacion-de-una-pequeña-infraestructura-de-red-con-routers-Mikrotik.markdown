@@ -177,7 +177,7 @@ Si queremos hacer lo mismo pero desde **Cliente 1**, debemos configurar algún e
 
 Antes que nada vamos a comprobar que el enlace está bien configurado. Para ello vamos a hacer ping desde uno de los routers. Podemos hacerlo o bien desde *Winbox* en *Tools* - *Ping*:
 
-![ping1]()
+![ping1](https://i.ibb.co/02t33C5/ping-1.jpg)
 
 O desde el terminal:
 ````terminal
