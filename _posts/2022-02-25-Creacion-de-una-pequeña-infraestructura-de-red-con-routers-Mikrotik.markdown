@@ -20,7 +20,7 @@ La infraestructura a su vez se encuentra dividida por:
 * Dos redes LAN.
 * Un enlace entre los dos routers que simula un entorno WAN.
 
-El objetivo del post es mostar la configuración de los routers Mikrotik para tal escenario (enrutamiento, reglas de cortafuegos, DHCP, etc) y hacer pruebas que muestren su correcto funcionamiento. A continuación os muestro el esquema del escenario, que contiene las direcciones IP de los equipos y las distintas conexiones:
+El objetivo del post es mostar la configuración de los routers Mikrotik para tal escenario (asignación de direcciones IP a las interfaces, enrutamiento, reglas de cortafuegos, DHCP, etc) y hacer pruebas que muestren su correcto funcionamiento. A continuación os muestro el escenario, que contiene las direcciones IP de los equipos y las distintas conexiones:
 
 ![escenario1](https://i.ibb.co/BLHRf3p/escenario-1.jpg) 
 
