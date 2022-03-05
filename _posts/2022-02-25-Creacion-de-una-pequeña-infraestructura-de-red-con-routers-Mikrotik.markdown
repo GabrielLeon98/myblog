@@ -235,3 +235,4 @@ Desde el terminal:
 [admin@Router-BACLN] > ip/route/add dst-address=192.168.21.0/24 gateway=1.1.1.21
 ````
 
+Una vez añadida las dos entradas estáticas en ambos routers, podemos hacer una prueba de conectividad por ejemplo, realizando un ping desde **Cliente 1** a alguno de los equipos, accediendo a la página web o entrando al servidor por SSH:
