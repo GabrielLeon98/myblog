@@ -236,3 +236,9 @@ Desde el terminal:
 ````
 
 Una vez añadida las dos entradas estáticas en ambos routers, podemos hacer una prueba de conectividad por ejemplo, realizando un ping desde **Cliente 1** a alguno de los equipos, accediendo a la página web o entrando al servidor por SSH:
+
+* Ping a **Cliente 2**:
+![ping](https://i.ibb.co/d4Jx5Wp/ping1.jpg)
+
+* Servidor Web:
+![servidorweb](https://i.ibb.co/gMnxD3b/serv-1.jpg)
